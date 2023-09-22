@@ -5,13 +5,14 @@ import { hashPassword, comparePassword } from "../helpers/bcrypt.js";
 // register controller
 export const registerController = async (req, res) => {
   try {
-    const { name, email, phone, password } = req.body;
+    const { name, email, phone, password, role } = req.body;
     const hashedPassword = await hashPassword(password);
     await User.create({
       name,
       email,
       phone,
       password: hashedPassword,
+      role,
     });
     res.status(201).send({
       success: true,
@@ -54,6 +55,7 @@ export const loginController = async (req, res) => {
 
     // If Both are Correct then create a json web token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+    res.cookie("token", token);
     return res.status(200).send({
       success: true,
       message: "User successfully logged in",
