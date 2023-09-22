@@ -12,8 +12,16 @@ export const registerController = async (req, res) => {
       phone,
       password: hashedPassword,
     });
-    return res.status(201).json({ message: "User Registered Successfully" });
+    res.status(201).send({
+      success: true,
+      message: "User Successfully Registered",
+    });
   } catch (error) {
     console.log(`Error inside registerController : ${error}`);
+    res.status(500).send({
+      success: false,
+      message: "Error in registration",
+      error,
+    });
   }
 };
