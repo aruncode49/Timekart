@@ -5,7 +5,7 @@ import aboutImage from "/images/about.jpg";
 const About = () => {
   return (
     <Layout>
-      <div className="md:flex items-center justify-center gap-4 pb-10 pt-5">
+      <div className="md:flex items-center justify-center gap-4 pb-10 pt-10">
         <img className="mx-auto w-[400px]" src={aboutImage} alt="About Logo" />
         <p className="text-lg text-center">
           "Elevate your online shopping experience with our cutting-edge
