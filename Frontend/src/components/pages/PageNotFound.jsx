@@ -5,7 +5,7 @@ import pagenotfound from "/images/pagenotfound.svg";
 
 const PageNotFound = () => {
   return (
-    <Layout>
+    <Layout title={"404 Page Not Found"}>
       <div className="text-center pb-10 md:pb-20 ">
         <img
           className="w-[400px] mx-auto p-10 "

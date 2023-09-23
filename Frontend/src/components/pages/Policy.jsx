@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout";
 
 const Policy = () => {
   return (
-    <Layout>
+    <Layout title={"Privacy Policy - Deal Daddy"}>
       <div className="pb-10 pt-5 text-lg">
         <p>
           <strong>Privacy Policy</strong>

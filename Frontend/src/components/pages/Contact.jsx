@@ -6,7 +6,7 @@ import { BiLogoGmail } from "react-icons/bi";
 
 const Contact = () => {
   return (
-    <Layout>
+    <Layout title={"Contact Us - Deal Daddy"}>
       <div className="flex flex-col md:flex-row items-center justify-center md:gap-8 pb-10 pt-5 text-center">
         <img className="w-[400px]" src={contactImage} alt="contact support" />
         <div>
@@ -17,7 +17,7 @@ const Contact = () => {
             "Connect with me for any inquiries or feedback", Feel free to send
             your thought &darr;
           </p>
-          <div className="flex items-center justify-center gap-3 mt-3">
+          <div className="flex items-center justify-center gap-3 mt-3 text-lg">
             <div className="flex items-center gap-2 font-medium">
               <BsLinkedin />
               <a href="https://www.linkedin.com/in/aruncode49/" target="_blank">

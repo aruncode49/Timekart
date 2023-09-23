@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout";
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout title={"Deal Daddy - Online Shopping Website"}>
       <div>Home</div>
     </Layout>
   );
