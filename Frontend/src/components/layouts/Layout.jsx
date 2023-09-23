@@ -4,10 +4,12 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="max-w-screen-lg mx-auto px-4">
+    <div>
       <Header />
 
-      <main className="min-h-[80vh]">{children}</main>
+      <main className="max-w-screen-lg mx-auto px-4 min-h-[70vh]">
+        {children}
+      </main>
 
       <Footer />
     </div>

@@ -8,7 +8,7 @@ const Header = () => {
 
   // Navbar
   return (
-    <div className="flex justify-between items-center py-3">
+    <div className="max-w-screen-lg mx-auto px-4 flex justify-between items-center py-3">
       {/* logo */}
       <div className="flex items-center gap-2 cursor-pointer">
         <BsCart4 fontSize={34} color="#3e9f23" />
