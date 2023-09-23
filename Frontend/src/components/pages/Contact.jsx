@@ -7,7 +7,7 @@ import { BiLogoGmail } from "react-icons/bi";
 const Contact = () => {
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row items-center justify-center md:gap-8 pb-10 text-center">
+      <div className="flex flex-col md:flex-row items-center justify-center md:gap-8 pb-10 pt-5 text-center">
         <img className="w-[400px]" src={contactImage} alt="contact support" />
         <div>
           <h1 className="text-xl font-medium bg-slate-900 text-white py-1 pl-4 text-center">
