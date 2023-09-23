@@ -89,7 +89,14 @@ const Policy = () => {
         <strong>Contact Us</strong>
         <p>
           If you have any questions or concerns about our Privacy Policy or how
-          we handle your data, please contact us at [Contact Information].
+          we handle your data, please contact us at{" "}
+          <a
+            className="text-blue-600"
+            href="https://mail.google.com/mail/u/0/#inbox"
+          >
+            <em>click here</em>
+          </a>
+          .
         </p>
         <br />
         By accessing or using our Services, you consent to the practices
