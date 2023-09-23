@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "/img/logo_white.png";
+import logo from "/images/logo_white.png";
 
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-tr from-[#69c64f] to-[#3e9f23] px-8 py-4 pb-8 rounded-t-[50px] text-center">
+    <div className="bg-slate-900 px-8 py-4 pb-8 rounded-t-[50px] text-center">
       <img
         className="w-[50px] mx-auto "
         src={logo}
@@ -13,7 +13,7 @@ const Footer = () => {
       <p className="text-white md:text-lg">
         ©️ 2023 Deal Daddy India, Inc. All Right Reserved
       </p>
-      <div className="pt-2 flex gap-3 justify-center font-medium text-white">
+      <div className="pt-2 flex md:gap-3 justify-center font-medium text-white">
         <Link className="px-2 hover:scale-105" to="/about">
           About
         </Link>
