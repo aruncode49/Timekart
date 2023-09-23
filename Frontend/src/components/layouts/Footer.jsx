@@ -14,16 +14,16 @@ const Footer = () => {
         ©️ 2023 Deal Daddy India, Inc. All Right Reserved
       </p>
       <div className="pt-2 flex gap-3 justify-center font-medium text-white">
-        <Link className="px-2 hover:scale-105" to="/">
-          Home
-        </Link>
-        |
         <Link className="px-2 hover:scale-105" to="/about">
           About
         </Link>
         |
         <Link className="px-2 hover:scale-105" to="/contact">
           Contact
+        </Link>
+        |
+        <Link className="px-2 hover:scale-105" to="/privacypolicy">
+          Privacy Policy
         </Link>
       </div>
     </div>
