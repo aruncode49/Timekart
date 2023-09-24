@@ -5,9 +5,9 @@ import aboutImage from "/images/about.jpg";
 const About = () => {
   return (
     <Layout title={"About Us - Deal Daddy"}>
-      <div className="md:flex items-center justify-center gap-4 pb-10 pt-10">
+      <div className="md:w-full md:flex items-center justify-center gap-8 pb-10 pt-10 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
         <img
-          className="mx-auto w-[400px] rounded-2xl shadow-md mb-8 md:mb-0"
+          className="mx-auto w-[400px] mb-8 md:mb-0 rounded-2xl shadow-md"
           src={aboutImage}
           alt="About Logo"
         />
