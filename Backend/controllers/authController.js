@@ -6,6 +6,7 @@ import { hashPassword, comparePassword } from "../helpers/bcrypt.js";
 export const registerController = async (req, res) => {
   try {
     const { name, email, phone, password, role } = req.body;
+    console.log(name, email, phone, password);
     const hashedPassword = await hashPassword(password);
     await User.create({
       name,

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 import Layout from "../../layouts/Layout";
 
 const Register = () => {
@@ -8,10 +11,34 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
+  // use navigate hook for changing the location or redirect the user
+  const navigate = useNavigate();
+
   // handle submit form function
-  function handleRegistrationSubmit(e) {
+  async function handleRegistrationSubmit(e) {
     e.preventDefault();
-    console.log(name, email, phone, password);
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/v1/auth/register",
+        {
+          name,
+          email,
+          phone,
+          password,
+        }
+      );
+
+      const data = await res.data;
+
+      if (res.data.success) {
+        toast.success(res.data.message);
+        navigate("/login");
+      }
+      console.log(`Registration Response Successfull : ${data}`);
+    } catch (error) {
+      toast.error("Something Went Wrong!");
+      console.log(`Error inside handleRegistration: ${error}`);
+    }
   }
 
   return (
@@ -21,7 +48,6 @@ const Register = () => {
         <div className="px-8">
           {/* form */}
           <form
-            action=""
             onSubmit={handleRegistrationSubmit}
             className="flex flex-col gap-6"
           >

@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { Toaster } from "react-hot-toast";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -19,6 +20,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
       <Header />
       <div className="bg-[#FFF5E0]">
         <main className="relative max-w-screen-lg mx-auto px-4 min-h-[70vh] overflow-hidden">
+          <Toaster />
           {children}
         </main>
       </div>
