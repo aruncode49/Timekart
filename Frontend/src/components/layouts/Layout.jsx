@@ -17,9 +17,11 @@ const Layout = ({ children, title, description, keywords, author }) => {
       </div>
 
       <Header />
-      <main className="max-w-screen-lg mx-auto px-4 min-h-[70vh] overflow-hidden">
-        {children}
-      </main>
+      <div className="bg-[#FFF5E0]">
+        <main className="max-w-screen-lg mx-auto px-4 min-h-[70vh] overflow-hidden">
+          {children}
+        </main>
+      </div>
       <Footer />
     </div>
   );

@@ -6,7 +6,11 @@ const About = () => {
   return (
     <Layout title={"About Us - Deal Daddy"}>
       <div className="md:flex items-center justify-center gap-4 pb-10 pt-10">
-        <img className="mx-auto w-[400px]" src={aboutImage} alt="About Logo" />
+        <img
+          className="mx-auto w-[400px] rounded-2xl shadow-md mb-8 md:mb-0"
+          src={aboutImage}
+          alt="About Logo"
+        />
         <p className="text-lg text-center">
           "Elevate your online shopping experience with our cutting-edge
           e-commerce platform, powered by the robust MERN stack (MongoDB,

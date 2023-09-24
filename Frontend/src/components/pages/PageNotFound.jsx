@@ -16,7 +16,7 @@ const PageNotFound = () => {
           Oops! Page Not Found
         </h1>
         <Link
-          className="text-lg font-medium bg-slate-900 hover:bg-slate-700 text-white px-3 py-2 rounded-lg "
+          className="text-lg font-medium bg-slate-900 hover:bg-slate-600 text-white px-3 py-2 rounded-lg "
           to="/"
         >
           Go Back
