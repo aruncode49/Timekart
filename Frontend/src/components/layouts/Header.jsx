@@ -63,9 +63,9 @@ const Header = () => {
         </div>
 
         {/* Nav Links for mobile version */}
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center md:hidden z-50">
           <NavLink
-            className="text-lg px-2 py-1 font-medium hover:text-green-400 z-10 pt-2"
+            className="text-lg px-2 py-1 font-medium hover:text-green-400 pt-2"
             to="/cart"
           >
             <div className="relative mr-2">
@@ -74,7 +74,7 @@ const Header = () => {
             </div>
           </NavLink>
           <div
-            className="text-green-500 cursor-pointer p-2 z-10 mt-2"
+            className="text-green-500 cursor-pointer p-2 mt-2"
             onClick={() => setIsNavLinksShown((prev) => !prev)}
           >
             <GiHamburgerMenu fontSize={34} />
@@ -82,7 +82,7 @@ const Header = () => {
         </div>
 
         {isNavLinksShown && (
-          <div className="text-green-400 flex flex-col absolute top-0 right-0 w-1/2 bg-slate-900 pt-[5rem] shadow-xl rounded-xl">
+          <div className="text-green-400 flex flex-col absolute top-0 right-0 w-1/2 bg-slate-900 pt-[5rem] shadow-xl rounded-xl z-40">
             <NavLink
               className="py-5 text-lg font-medium border-b border-t border-gray-200 pl-8 px-4 hover:bg-slate-600"
               to="/"
