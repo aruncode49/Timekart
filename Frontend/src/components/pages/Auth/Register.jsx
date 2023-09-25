@@ -43,16 +43,19 @@ const Register = () => {
 
   return (
     <Layout>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[600px]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[600px] text-center">
         {/* form backgournd div */}
-        <div className="px-8">
+        <div className="px-4 md:px-8 py-8 pb-10 bg-white/50 backdrop:blur-sm mx-4 md:mx-0 rounded-2xl border-2 border-slate-900">
+          <h1 className="text-3xl font-medium mb-6 md:mb-4 px-2 py-1 inline-block">
+            Create Account
+          </h1>
           {/* form */}
           <form
             onSubmit={handleRegistrationSubmit}
             className="flex flex-col gap-6"
           >
             <input
-              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 selection:bg-green-400"
+              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 rounded-lg selection:bg-green-400"
               type="text"
               name="name"
               placeholder="Enter your name"
@@ -62,7 +65,7 @@ const Register = () => {
               required
             />
             <input
-              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 selection:bg-green-400"
+              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 rounded-lg selection:bg-green-400"
               type="email"
               name="email"
               placeholder="Enter your email"
@@ -72,7 +75,7 @@ const Register = () => {
               required
             />
             <input
-              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 selection:bg-green-400"
+              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 rounded-lg selection:bg-green-400"
               type="text"
               name="phone"
               placeholder="Enter your phone no."
@@ -82,7 +85,7 @@ const Register = () => {
               required
             />
             <input
-              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 selection:bg-green-400"
+              className="px-3 py-2 border-2 border-slate-900 outline-none placeholder:text-slate-900 rounded-lg selection:bg-green-400"
               type="password"
               name="password"
               placeholder="Enter your password"
@@ -93,7 +96,7 @@ const Register = () => {
             />
 
             <input
-              className="bg-slate-900 px-3 py-2 text-white text-lg cursor-pointer hover:text-green-400"
+              className="bg-slate-900 px-3 py-2 text-white text-lg cursor-pointer rounded-lg hover:text-green-400"
               type="submit"
               value="Register"
             />
