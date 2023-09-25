@@ -11,36 +11,54 @@ const Header = () => {
     <div className="bg-slate-900 text-white">
       <div className="max-w-screen-lg mx-auto px-4 flex justify-between items-center py-3">
         {/* logo */}
-        <div className="flex items-center gap-2 cursor-pointer">
-          <BsCart4 fontSize={34} />
-          <h1 className="text text-3xl md:text-4xl font-bold pt-2">
-            <span className="text-green-400">D</span>eal{" "}
-            <span className="text-green-400">D</span>addy
-          </h1>
-        </div>
+        <NavLink to={"/"}>
+          <div className="flex items-center gap-2 cursor-pointer">
+            <BsCart4 fontSize={34} />
+            <h1 className="text text-3xl md:text-4xl font-bold pt-2">
+              <span className="text-green-400">D</span>eal{" "}
+              <span className="text-green-400">D</span>addy
+            </h1>
+          </div>
+        </NavLink>
 
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-1 pt-2">
           <NavLink
-            className="text-lg px-2 py-1 font-medium hover:text-green-400"
+            className={({ isActive }) =>
+              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
+                isActive ? "text-green-400" : "text-white"
+              }`
+            }
             to="/"
           >
             Home
           </NavLink>
           <NavLink
-            className="text-lg px-2 py-1 font-medium  hover:text-green-400 "
+            className={({ isActive }) =>
+              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
+                isActive ? "text-green-400" : "text-white"
+              }`
+            }
             to="/about"
           >
             About
           </NavLink>
           <NavLink
-            className="text-lg px-2 py-1 font-medium  hover:text-green-400 "
+            className={({ isActive }) =>
+              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
+                isActive ? "text-green-400" : "text-white"
+              }`
+            }
             to="/category"
           >
             Category
           </NavLink>
           <NavLink
-            className="text-lg px-2 py-1 font-medium hover:text-green-400 "
+            className={({ isActive }) =>
+              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
+                isActive ? "text-green-400" : "text-white"
+              }`
+            }
             to="/cart"
           >
             <div className="relative mr-2">
@@ -49,13 +67,24 @@ const Header = () => {
             </div>
           </NavLink>
           <NavLink
-            className="text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl"
+            className={({ isActive }) =>
+              `text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
+                isActive
+                  ? "border-green-400 text-green-400"
+                  : "border-white text-white"
+              }`
+            }
             to="/register"
           >
             Register
           </NavLink>
           <NavLink
-            className="text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600"
+            className={({ isActive }) =>
+              `text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600
+              ${
+                isActive ? "bg-green-600 text-white" : "bg-white text-slate-900"
+              }`
+            }
             to="/login"
           >
             Login
