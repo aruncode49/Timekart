@@ -16,7 +16,7 @@ const Login = () => {
   async function handleLoginSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/auth/login", {
+      const res = await axios.post("/api/v1/auth/login", {
         email,
         password,
       });
@@ -35,7 +35,7 @@ const Login = () => {
   }
 
   return (
-    <Layout>
+    <Layout title={"Log In - Deal Daddy"}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[600px] text-center">
         {/* form backgournd div */}
 
