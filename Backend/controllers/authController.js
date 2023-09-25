@@ -6,7 +6,32 @@ import { hashPassword, comparePassword } from "../helpers/bcrypt.js";
 export const registerController = async (req, res) => {
   try {
     const { name, email, phone, password, role } = req.body;
-    console.log(name, email, phone, password);
+
+    // handle name error
+    if (name.length < 4) {
+      return res.status(200).send({
+        success: false,
+        message: "name must be 4 characters",
+      });
+    }
+
+    // handle email error
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.status(200).send({
+        success: false,
+        message: "email already exist",
+      });
+    }
+
+    // handle password
+    if (password.length < 6) {
+      return res.status(200).send({
+        success: false,
+        message: "password must be 6 characters",
+      });
+    }
+
     const hashedPassword = await hashPassword(password);
     await User.create({
       name,
@@ -15,13 +40,14 @@ export const registerController = async (req, res) => {
       password: hashedPassword,
       role,
     });
-    res.status(201).send({
+
+    return res.status(201).send({
       success: true,
       message: "User Successfully Registered",
     });
   } catch (error) {
     console.log(`Error inside registerController : ${error}`);
-    res.status(500).send({
+    return res.status(500).send({
       success: false,
       message: "Error in registration",
       error,

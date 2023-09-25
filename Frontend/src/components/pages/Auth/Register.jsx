@@ -33,6 +33,8 @@ const Register = () => {
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/login");
+      } else {
+        toast.error(res.data.message);
       }
       console.log(`Registration Response Successfull : ${data}`);
     } catch (error) {
