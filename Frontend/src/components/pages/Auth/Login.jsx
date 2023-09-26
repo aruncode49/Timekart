@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "../../layouts/Layout";
@@ -83,6 +83,14 @@ const Login = () => {
               type="submit"
               value="Log In"
             />
+
+            {/* forgot password */}
+            <Link
+              to="/reset-password"
+              className="text-lg text-slate-900 hover:scale-105"
+            >
+              Forgot Password?
+            </Link>
           </form>
         </div>
       </div>

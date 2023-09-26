@@ -9,6 +9,7 @@ import Register from "./components/pages/Auth/Register";
 import Login from "./components/pages/Auth/Login";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import Dashboard from "./components/pages/User/Dashboard";
+import ForgotPassword from "./components/pages/Auth/ForgotPassword";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="" element={<Dashboard />} />
         </Route>
         <Route path="/register" element={<Register />} />
+        <Route path="/reset-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

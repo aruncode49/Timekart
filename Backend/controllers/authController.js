@@ -5,7 +5,7 @@ import { hashPassword, comparePassword } from "../helpers/bcrypt.js";
 // register controller
 export const registerController = async (req, res) => {
   try {
-    const { name, email, phone, password, role } = req.body;
+    const { name, email, phone, password, role, answer } = req.body;
 
     // handle name error
     if (name.length < 4) {
@@ -38,6 +38,7 @@ export const registerController = async (req, res) => {
       email,
       phone,
       password: hashedPassword,
+      answer,
       role,
     });
 
@@ -103,15 +104,53 @@ export const loginController = async (req, res) => {
   }
 };
 
+// Private Route controller
+export const userAuthController = async (req, res) => {
+  return res.status(200).send({ ok: true });
+};
+
+// resetPasswordController
+export const resetPasswordController = async (req, res) => {
+  try {
+    const { email, answer, newPassword } = req.body;
+
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(200).send({
+        success: false,
+        message: "Enter correct email address",
+      });
+    }
+
+    if (answer != user.answer) {
+      return res.status(200).send({
+        success: false,
+        message: "wrong answer",
+      });
+    }
+
+    // now update password
+    const hashNewPassword = await hashPassword(newPassword);
+    await User.findByIdAndUpdate(user._id, { password: hashNewPassword });
+
+    return res.status(200).send({
+      success: true,
+      message: "Password reset successfully",
+    });
+  } catch (error) {
+    return res.status(500).send({
+      success: false,
+      message: "Error in password reset controller",
+      error: error,
+    });
+  }
+};
+
 // test controller
 export const testController = (req, res) => {
   res.status(200).send({
     success: "ok",
     message: "Test Successfull",
   });
-};
-
-// Private Route controller
-export const userAuthController = async (req, res) => {
-  return res.status(200).send({ ok: true });
 };
