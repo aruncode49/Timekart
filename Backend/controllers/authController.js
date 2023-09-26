@@ -110,3 +110,8 @@ export const testController = (req, res) => {
     message: "Test Successfull",
   });
 };
+
+// Private Route controller
+export const userAuthController = async (req, res) => {
+  return res.status(200).send({ ok: true });
+};

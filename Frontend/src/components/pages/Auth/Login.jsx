@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "../../layouts/Layout";
@@ -11,6 +11,7 @@ const Login = () => {
 
   // use navigate hook for changing the location or redirect the user
   const navigate = useNavigate();
+  const location = useLocation();
 
   // handle submit form function
   async function handleLoginSubmit(e) {
@@ -36,7 +37,7 @@ const Login = () => {
         // // store data in localStorage
         // localStorage.setItem("auth", JSON.stringify(res.data));
 
-        navigate("/");
+        navigate(location.state || "/");
       } else {
         toast.error(res.data.message);
       }

@@ -3,8 +3,7 @@ import User from "../models/userModel.js";
 
 export const requireLogin = async (req, res, next) => {
   try {
-    // const token = req.cookies["token"];
-    const token = req.headers.auth;
+    const token = req.cookies.token;
     if (token) {
       const payload = jwt.verify(token, process.env.JWT_SECRET);
       req.userId = payload._id;
