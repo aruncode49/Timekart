@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout";
 const Home = () => {
   return (
     <Layout title={"Deal Daddy - Online Shopping Website"}>
-      <div>Home</div>
+      <h1>Home Page</h1>
     </Layout>
   );
 };

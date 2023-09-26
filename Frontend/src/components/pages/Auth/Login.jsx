@@ -25,6 +25,17 @@ const Login = () => {
 
       if (res.data.success) {
         toast.success(res.data.message);
+
+        // // set data in auth context
+        // setAuth({
+        //   ...auth,
+        //   user: res.data.user,
+        //   token: res.data.token,
+        // });
+
+        // // store data in localStorage
+        // localStorage.setItem("auth", JSON.stringify(res.data));
+
         navigate("/");
       } else {
         toast.error(res.data.message);

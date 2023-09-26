@@ -1,10 +1,21 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import { NavLink } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [isNavLinksShown, setIsNavLinksShown] = useState(false);
+
+  const [cookies, setCookies, removeCookies] = useCookies(["token"]);
+  const token = cookies.token;
+
+  function clearCookie() {
+    removeCookies("token");
+    toast.success("User Successfully Logged Out", { duration: 3000 });
+  }
 
   // Navbar
   return (
@@ -66,29 +77,54 @@ const Header = () => {
               <BsCart4 fontSize={26} />
             </div>
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
-                isActive
-                  ? "border-green-400 text-green-400"
-                  : "border-white text-white"
-              }`
-            }
-            to="/register"
-          >
-            Register
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600
+
+          {/* Logout functionality */}
+          {token ? (
+            <>
+              {/* Logout */}
+              <NavLink
+                className={({ isActive }) =>
+                  `text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
+                    isActive
+                      ? "border-green-400 text-green-400"
+                      : "border-white text-white"
+                  }`
+                }
+                to="/"
+                onClick={clearCookie}
+              >
+                Logout
+              </NavLink>
+            </>
+          ) : (
+            <>
+              {/* Register */}
+              <NavLink
+                className={({ isActive }) =>
+                  `text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
+                    isActive
+                      ? "border-green-400 text-green-400"
+                      : "border-white text-white"
+                  }`
+                }
+                to="/register"
+              >
+                Register
+              </NavLink>
+              {/* Login */}
+              <NavLink
+                className={({ isActive }) =>
+                  `text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600
               ${
                 isActive ? "bg-green-600 text-white" : "bg-white text-slate-900"
               }`
-            }
-            to="/login"
-          >
-            Login
-          </NavLink>
+                }
+                to="/login"
+              >
+                Login
+              </NavLink>
+            </>
+          )}
         </div>
 
         {/* Nav Links for mobile version */}
@@ -106,7 +142,11 @@ const Header = () => {
             className="text-green-500 cursor-pointer p-2 mt-2"
             onClick={() => setIsNavLinksShown((prev) => !prev)}
           >
-            <GiHamburgerMenu fontSize={34} />
+            {isNavLinksShown ? (
+              <AiOutlineClose fontSize={34} />
+            ) : (
+              <GiHamburgerMenu fontSize={34} />
+            )}
           </div>
         </div>
 
@@ -130,18 +170,36 @@ const Header = () => {
             >
               Category
             </NavLink>
-            <NavLink
-              className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600"
-              to="/register"
-            >
-              Register
-            </NavLink>
-            <NavLink
-              className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
-              to="/login"
-            >
-              Login
-            </NavLink>
+
+            {token ? (
+              <>
+                {/* Logout */}
+                <NavLink
+                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
+                  to="/login"
+                  onClick={clearCookie}
+                >
+                  Logout
+                </NavLink>
+              </>
+            ) : (
+              <>
+                {/* Register */}
+                <NavLink
+                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600"
+                  to="/register"
+                >
+                  Register
+                </NavLink>
+                {/* Login */}
+                <NavLink
+                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
+                  to="/login"
+                >
+                  Login
+                </NavLink>
+              </>
+            )}
           </div>
         )}
       </div>
