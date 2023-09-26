@@ -113,13 +113,7 @@ const Header = () => {
               </NavLink>
               {/* Login */}
               <NavLink
-                className={({ isActive }) =>
-                  `text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600 ${
-                    isActive
-                      ? "bg-green-500 text-white"
-                      : "bg-white text-slate-900"
-                  }`
-                }
+                className="text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600"
                 to="/login"
               >
                 Login
