@@ -123,7 +123,13 @@ const Header = () => {
                   }}
                 >
                   <MenuItem onClick={handleClose}>
-                    <NavLink to="/dashboard">Dashboard</NavLink>
+                    <NavLink
+                      to={`/dashboard/${
+                        auth?.user?.role === 1 ? "admin" : "user"
+                      }`}
+                    >
+                      Dashboard
+                    </NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <NavLink onClick={handleLogOut} to="/">
@@ -208,7 +214,7 @@ const Header = () => {
                 {/* Logout */}
                 <NavLink
                   className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
-                  to="/dashboard"
+                  to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
                 >
                   Dashboard
                 </NavLink>

@@ -91,6 +91,7 @@ export const loginController = async (req, res) => {
         name: user.name,
         email: user.email,
         phone: user.phone,
+        role: user.role,
       },
     });
   } catch (error) {
@@ -103,8 +104,13 @@ export const loginController = async (req, res) => {
   }
 };
 
-// Private Route controller for dashboard
-export const userAuthController = async (req, res) => {
+// Private Route controller for user dashboard
+export const userAuthController = (req, res) => {
+  return res.status(200).send({ ok: true });
+};
+
+// Private Route controller for admin dashboard
+export const adminAuthController = (req, res) => {
   return res.status(200).send({ ok: true });
 };
 

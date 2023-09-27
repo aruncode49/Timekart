@@ -67,6 +67,7 @@ const Register = () => {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               spellCheck="false"
+              autoComplete="off"
               required
             />
             <input

@@ -5,6 +5,7 @@ import {
   testController,
   userAuthController,
   resetPasswordController,
+  adminAuthController,
 } from "../controllers/authController.js";
 
 import { requireLogin, isAdmin } from "../middlewares/authMiddleware.js";
@@ -21,6 +22,9 @@ router.post("/login", loginController);
 
 // PRIVATE ROUTE FOR DASHBOARD || METHOD GET
 router.get("/user-auth", requireLogin, userAuthController);
+
+// PRIVATE ROUTE FOR DASHBOARD || METHOD GET
+router.get("/admin-auth", requireLogin, isAdmin, adminAuthController);
 
 // RESET PASSWORD ROUTE || METHOD POST
 router.post("/reset-password", resetPasswordController);

@@ -7,8 +7,10 @@ import Policy from "./components/pages/Policy";
 import PageNotFound from "./components/pages/PageNotFound";
 import Register from "./components/pages/Auth/Register";
 import Login from "./components/pages/Auth/Login";
-import PrivateRoute from "./components/routes/PrivateRoute";
-import Dashboard from "./components/pages/User/Dashboard";
+import UserPrivateRoute from "./components/routes/UserPrivateRoute";
+import AdminPrivateRoute from "./components/routes/AdminPrivateRoute";
+import UserDashboard from "./components/user/UserDashboard";
+import AdminDashboard from "./components/admin/AdminDashboard";
 import ForgotPassword from "./components/pages/Auth/ForgotPassword";
 
 function App() {
@@ -16,8 +18,11 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="" element={<Dashboard />} />
+        <Route path="/dashboard" element={<UserPrivateRoute />}>
+          <Route path="user" element={<UserDashboard />} />
+        </Route>
+        <Route path="/dashboard" element={<AdminPrivateRoute />}>
+          <Route path="admin" element={<AdminDashboard />} />
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ForgotPassword />} />

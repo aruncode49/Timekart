@@ -4,7 +4,7 @@ import { Circles } from "react-loader-spinner";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const Spinner = () => {
+const Spinner = ({ path = "login" }) => {
   const [count, setCount] = useState(3);
   const navigate = useNavigate();
 
@@ -17,10 +17,10 @@ const Spinner = () => {
 
     if (count === 0) {
       toast.error("Please login to proceed!");
-      navigate("/login", { state: location.pathname });
+      navigate(`/${path}`, { state: location.pathname });
     }
     return () => clearInterval(interval);
-  }, [count, navigate]);
+  }, [count, navigate, path]);
 
   return (
     <Layout>
