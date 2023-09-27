@@ -18,12 +18,12 @@ const Layout = ({ children, title, description, keywords, author }) => {
       </div>
 
       <Header />
-      <div className="bg-[#FFF5E0]">
-        <main className="relative max-w-screen-lg mx-auto px-4 min-h-[70vh] overflow-hidden">
-          <Toaster />
-          {children}
-        </main>
-      </div>
+
+      <main className="max-w-screen-lg mx-auto px-4 overflow-hidden">
+        <Toaster />
+        {children}
+      </main>
+
       <Footer />
     </div>
   );

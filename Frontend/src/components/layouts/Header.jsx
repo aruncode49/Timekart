@@ -133,7 +133,7 @@ const Header = () => {
               {/* Register */}
               <NavLink
                 className={({ isActive }) =>
-                  `text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
+                  `text-lg px-2 py-1 ml-2 font-medium border border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
                     isActive
                       ? "border-green-400 text-green-400"
                       : "border-white text-white"

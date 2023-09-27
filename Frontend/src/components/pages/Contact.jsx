@@ -7,7 +7,7 @@ import { BiLogoGmail } from "react-icons/bi";
 const Contact = () => {
   return (
     <Layout title={"Contact Us - Deal Daddy"}>
-      <div className="md:w-full flex flex-col md:flex-row items-center justify-center md:gap-8 pb-10 pt-5 text-center md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+      <div className="md:w-full flex flex-col md:flex-row items-center justify-center md:gap-8 mt-20 text-center ">
         <img
           className="w-[400px] rounded-2xl shadow-md mb-8 md:mb-0 "
           src={contactImage}
