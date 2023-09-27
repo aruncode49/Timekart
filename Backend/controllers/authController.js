@@ -92,7 +92,6 @@ export const loginController = async (req, res) => {
         email: user.email,
         phone: user.phone,
       },
-      token,
     });
   } catch (error) {
     console.log(`Error inside loginController : ${error}`);
@@ -104,7 +103,7 @@ export const loginController = async (req, res) => {
   }
 };
 
-// Private Route controller
+// Private Route controller for dashboard
 export const userAuthController = async (req, res) => {
   return res.status(200).send({ ok: true });
 };

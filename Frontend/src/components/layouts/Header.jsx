@@ -5,6 +5,7 @@ import { BsCart4 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import toast from "react-hot-toast";
+import useAuth from "../../context/AuthContext";
 
 // material ui component
 import Button from "@mui/material/Button";
@@ -13,9 +14,9 @@ import MenuItem from "@mui/material/MenuItem";
 
 const Header = () => {
   const [isNavLinksShown, setIsNavLinksShown] = useState(false);
+  const [auth, setAuth] = useAuth();
 
   const [cookies, setCookies, removeCookies] = useCookies(["token"]);
-  const token = cookies.token;
 
   // functionality for dropdown menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,9 +28,13 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  // remove cookies for logout
-  function clearCookie() {
+  // handle logout function
+  function handleLogOut() {
+    localStorage.removeItem("auth");
     removeCookies("token");
+    setAuth({
+      user: null,
+    });
     toast.success("User Successfully Logged Out", { duration: 3000 });
   }
 
@@ -95,7 +100,7 @@ const Header = () => {
           </NavLink>
 
           {/* Logout functionality */}
-          {token ? (
+          {auth.user ? (
             <>
               {/* User Drop Down */}
               <div className="text-white">
@@ -106,7 +111,7 @@ const Header = () => {
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
                 >
-                  User <AiOutlineDown />
+                  {auth?.user?.name} <AiOutlineDown />
                 </Button>
                 <Menu
                   id="basic-menu"
@@ -121,7 +126,7 @@ const Header = () => {
                     <NavLink to="/dashboard">Dashboard</NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
-                    <NavLink onClick={clearCookie} to="/">
+                    <NavLink onClick={handleLogOut} to="/">
                       Logout
                     </NavLink>
                   </MenuItem>
@@ -198,7 +203,7 @@ const Header = () => {
               Category
             </NavLink>
 
-            {token ? (
+            {auth.user ? (
               <>
                 {/* Logout */}
                 <NavLink
@@ -210,7 +215,7 @@ const Header = () => {
                 <NavLink
                   className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
                   to="/login"
-                  onClick={clearCookie}
+                  onClick={handleLogOut}
                 >
                   Logout
                 </NavLink>

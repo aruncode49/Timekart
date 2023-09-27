@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "../../layouts/Layout";
+import useAuth from "../../../context/AuthContext";
 
 const Login = () => {
   // intitalizing states for each input field
@@ -12,6 +13,9 @@ const Login = () => {
   // use navigate hook for changing the location or redirect the user
   const navigate = useNavigate();
   const location = useLocation();
+
+  // context
+  const [auth, setAuth] = useAuth();
 
   // handle submit form function
   async function handleLoginSubmit(e) {
@@ -27,15 +31,14 @@ const Login = () => {
       if (res.data.success) {
         toast.success(res.data.message);
 
-        // // set data in auth context
-        // setAuth({
-        //   ...auth,
-        //   user: res.data.user,
-        //   token: res.data.token,
-        // });
+        // set data in auth context
+        setAuth({
+          ...auth,
+          user: res.data.user,
+        });
 
-        // // store data in localStorage
-        // localStorage.setItem("auth", JSON.stringify(res.data));
+        // store data in localStorage
+        localStorage.setItem("auth", JSON.stringify(res.data));
 
         navigate(location.state || "/");
       } else {
