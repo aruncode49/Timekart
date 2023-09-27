@@ -10,6 +10,8 @@ import Login from "./components/pages/Auth/Login";
 import UserPrivateRoute from "./components/routes/UserPrivateRoute";
 import AdminPrivateRoute from "./components/routes/AdminPrivateRoute";
 import UserDashboard from "./components/user/UserDashboard";
+import UserProfilePage from "./components/user/UserProfilePage";
+import UserOrdersPage from "./components/user/UserOrdersPage";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import ForgotPassword from "./components/pages/Auth/ForgotPassword";
 import CreateCategory from "./components/admin/CreateCategory";
@@ -24,6 +26,8 @@ function App() {
         {/* User Private Routes */}
         <Route path="/dashboard" element={<UserPrivateRoute />}>
           <Route path="user" element={<UserDashboard />} />
+          <Route path="user/profile" element={<UserProfilePage />} />
+          <Route path="user/orders" element={<UserOrdersPage />} />
         </Route>
         {/* Admin Private Routes */}
         <Route path="/dashboard" element={<AdminPrivateRoute />}>

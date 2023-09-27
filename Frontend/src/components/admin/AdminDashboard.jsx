@@ -4,7 +4,7 @@ import AdminDashboardTemplate from "./AdminDashboardTemplate";
 import { AiOutlineUser, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import adminImage from "/images/admin.png";
 
-const AdminDetails = () => {
+const AdminDashboard = () => {
   const [auth, setAuth] = useAuth();
 
   return (
@@ -37,4 +37,4 @@ const AdminDetails = () => {
   );
 };
 
-export default AdminDetails;
+export default AdminDashboard;
