@@ -8,7 +8,7 @@ const AdminDashboard = () => {
   const [auth, setAuth] = useAuth();
 
   return (
-    <AdminDashboardTemplate>
+    <AdminDashboardTemplate title="Admin Dashboard - Deal Daddy">
       {/* Admin Details */}
       {auth.user && (
         <div className="flex gap-2 mt-8 text-lg ">

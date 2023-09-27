@@ -3,7 +3,7 @@ import AdminDashboardTemplate from "./AdminDashboardTemplate";
 
 const Users = () => {
   return (
-    <AdminDashboardTemplate>
+    <AdminDashboardTemplate title={"All Users - Deal Daddy"}>
       <h1>All Users list</h1>
     </AdminDashboardTemplate>
   );

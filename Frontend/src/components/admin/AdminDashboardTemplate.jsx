@@ -3,7 +3,7 @@ import AdminSideBar from "./AdminSideBar";
 import Layout from "../layouts/Layout";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
-const AdminDashboardTemplate = ({ children }) => {
+const AdminDashboardTemplate = ({ children, title }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleSideBarToggler() {
@@ -11,7 +11,7 @@ const AdminDashboardTemplate = ({ children }) => {
   }
 
   return (
-    <Layout>
+    <Layout title={title}>
       <div className="">
         {/* Admin Panel Heading */}
         <div
