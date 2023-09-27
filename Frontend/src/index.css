@@ -11,3 +11,19 @@ body {
 .footer-img {
   color: white;
 }
+
+#basic-button {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  gap: 3px;
+  text-transform: capitalize;
+  padding: 1px 4px;
+  border-radius: 12px;
+}
+
+#basic-button:hover {
+  border-color: rgb(74 222 128);
+  color: rgb(74 222 128);
+}

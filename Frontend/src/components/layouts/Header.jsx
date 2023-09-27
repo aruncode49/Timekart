@@ -3,8 +3,13 @@ import { useCookies } from "react-cookie";
 import { NavLink } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import toast from "react-hot-toast";
+
+// material ui component
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const Header = () => {
   const [isNavLinksShown, setIsNavLinksShown] = useState(false);
@@ -12,6 +17,17 @@ const Header = () => {
   const [cookies, setCookies, removeCookies] = useCookies(["token"]);
   const token = cookies.token;
 
+  // functionality for dropdown menu
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  // remove cookies for logout
   function clearCookie() {
     removeCookies("token");
     toast.success("User Successfully Logged Out", { duration: 3000 });
@@ -81,20 +97,36 @@ const Header = () => {
           {/* Logout functionality */}
           {token ? (
             <>
-              {/* Logout */}
-              <NavLink
-                className={({ isActive }) =>
-                  `text-lg px-2 py-1 ml-2 font-medium border-2 border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
-                    isActive
-                      ? "border-green-400 text-green-400"
-                      : "border-white text-white"
-                  }`
-                }
-                to="/"
-                onClick={clearCookie}
-              >
-                Logout
-              </NavLink>
+              {/* User Drop Down */}
+              <div className="text-white">
+                <Button
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  User <AiOutlineDown />
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <NavLink onClick={clearCookie} to="/">
+                      Logout
+                    </NavLink>
+                  </MenuItem>
+                </Menu>
+              </div>
             </>
           ) : (
             <>
@@ -169,6 +201,12 @@ const Header = () => {
             {token ? (
               <>
                 {/* Logout */}
+                <NavLink
+                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
+                  to="/dashboard"
+                >
+                  Dashboard
+                </NavLink>
                 <NavLink
                   className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
                   to="/login"
