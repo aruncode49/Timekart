@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "/images/logo_white.png";
+import footerLogo from "/images/footer_logo.png";
 
 const Footer = () => {
   return (
     <div className="px-8 py-4 pb-16 border-t border-gray-300 text-center w-full mt-20 ">
       <img
         className="w-[50px] mx-auto "
-        src={logo}
+        src={footerLogo}
         alt="footer_white_mustache"
       />
       <p className="text-gray-600 md:text-lg">
