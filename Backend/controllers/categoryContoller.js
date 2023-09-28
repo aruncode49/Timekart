@@ -77,3 +77,31 @@ export async function getAllCategoriesController(req, res) {
     });
   }
 }
+
+// get a single category controller
+export async function getSingleCategoryController(req, res) {
+  try {
+    const categorySlug = req.params.slug;
+    const getCategoryFromSlug = await Category.findOne({ slug: categorySlug });
+
+    if (!getCategoryFromSlug) {
+      return res.status(404).send({
+        success: false,
+        message: "Category Not Found",
+      });
+    }
+
+    return res.status(200).send({
+      success: true,
+      message: "Category Found!",
+      getCategoryFromSlug,
+    });
+  } catch (error) {
+    console.log(`Error inside get single category controller: ${error}`);
+    return res.status(500).send({
+      error,
+      success: false,
+      message: "Error inside get single category controller",
+    });
+  }
+}

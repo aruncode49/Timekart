@@ -3,6 +3,7 @@ import { requireLogin, isAdmin } from "../middlewares/authMiddleware.js";
 import {
   createCategoryController,
   getAllCategoriesController,
+  getSingleCategoryController,
   updateCategoryController,
 } from "../controllers/categoryContoller.js";
 
@@ -18,6 +19,7 @@ router.put("/update/:id", requireLogin, isAdmin, updateCategoryController);
 router.get("/allCategories", getAllCategoriesController);
 
 // get route for getting a particular category
+router.get("/:slug", getSingleCategoryController);
 // delete route for deleting a particular category
 
 export default router;
