@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     <AdminDashboardTemplate title="Admin Dashboard - Deal Daddy">
       {/* Admin Details */}
       {auth.user && (
-        <div className="flex gap-2 mt-8 text-lg ">
+        <div className="flex gap-2 mt-4 text-lg ">
           <img
             className="rounded-full w-[100px] h-[100px]"
             src={adminImage}
