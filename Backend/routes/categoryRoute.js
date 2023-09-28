@@ -2,6 +2,7 @@ import express from "express";
 import { requireLogin, isAdmin } from "../middlewares/authMiddleware.js";
 import {
   createCategoryController,
+  getAllCategoriesController,
   updateCategoryController,
 } from "../controllers/categoryContoller.js";
 
@@ -14,6 +15,8 @@ router.post("/create", requireLogin, isAdmin, createCategoryController);
 router.put("/update/:id", requireLogin, isAdmin, updateCategoryController);
 
 // get route for getting all categories
+router.get("/allCategories", getAllCategoriesController);
+
 // get route for getting a particular category
 // delete route for deleting a particular category
 

@@ -52,3 +52,28 @@ export async function updateCategoryController(req, res) {
     });
   }
 }
+
+// get all categories controller
+export async function getAllCategoriesController(req, res) {
+  try {
+    const allCategories = await Category.find({});
+    if (!allCategories) {
+      return res.status(200).send({
+        success: false,
+        message: "Category List is empty",
+      });
+    }
+    return res.status(200).send({
+      success: true,
+      message: "Category Updated Successfully",
+      allCategories,
+    });
+  } catch (error) {
+    console.log(`Error inside get all categories controller: ${error}`);
+    return res.status(500).send({
+      error,
+      success: false,
+      message: "Error inside get all categories controller",
+    });
+  }
+}
