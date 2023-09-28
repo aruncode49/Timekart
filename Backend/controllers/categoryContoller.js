@@ -105,3 +105,22 @@ export async function getSingleCategoryController(req, res) {
     });
   }
 }
+
+// delete category controller
+export async function deleteCategoryController(req, res) {
+  try {
+    const categoryId = req.params.id;
+    await Category.findByIdAndDelete(categoryId);
+    return res.status(200).send({
+      success: true,
+      message: "Category Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(`Error inside delete category controller: ${error}`);
+    return res.status(500).send({
+      error,
+      success: false,
+      message: "Error inside delete category controller",
+    });
+  }
+}
