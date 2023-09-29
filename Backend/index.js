@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoute.js";
+import productRoutes from "./routes/productRoute.js";
 import { connectMongoDb } from "./config/db.js";
 
 // Access .env
@@ -28,6 +29,7 @@ app.use(cookieParser());
 // routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/product", productRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to ecommerce project");
