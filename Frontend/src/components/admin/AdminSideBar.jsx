@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const AdminSideBar = () => {
   return (
-    <div className="w-[200px] h-[300px] fixed md:relative bg-white">
+    <div className="w-[200px] shadow-lg fixed md:relative bg-white">
       <>
         <ul className="flex flex-col">
           <NavLink

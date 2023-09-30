@@ -65,7 +65,7 @@ export async function getAllCategoriesController(req, res) {
     }
     return res.status(200).send({
       success: true,
-      message: "Category Updated Successfully",
+      message: "Category fetched Successfully",
       allCategories,
     });
   } catch (error) {

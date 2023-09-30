@@ -16,10 +16,9 @@ const AdminDashboardTemplate = ({ children, title }) => {
         {/* Admin Panel Heading */}
         <div
           onClick={handleSideBarToggler}
-          className="flex w-full items-center gap-2 border-b py-2 cursor-pointer text-2xl font-medium mt-3"
+          className="flex items-center justify-center gap-2 border-b py-2 cursor-pointer text-2xl font-medium mt-3 bg-gray-200 w-12 mb-2 rounded-lg"
         >
           {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}
-          <h1>Admin Panel</h1>
         </div>
         <div className="flex gap-3">
           {/* Side Menu */}
