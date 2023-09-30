@@ -6,12 +6,12 @@ const CreateCategoryForm = ({ name, setName, handleCreateCategorySubmit }) => {
       <form onSubmit={handleCreateCategorySubmit} className="flex gap-4">
         <input
           className="w-[300px] px-3 py-2 border border-slate-900 outline-none placeholder:text-slate-900 selection:bg-green-400 rounded-lg placeholder:text-sm"
-          type="email"
-          name="email"
+          type="text"
           placeholder="Enter new category"
           value={name}
           onChange={(e) => setName(e.target.value)}
           spellCheck="false"
+          autoComplete="off"
           required
         />
         <input
