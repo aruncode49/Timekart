@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
-import { BiCategory } from "react-icons/bi";
+import { BiCategory, BiTennisBall } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 
 const AdminSideBar = () => {
@@ -17,7 +17,7 @@ const AdminSideBar = () => {
             }
           >
             <BiCategory />
-            Create Category
+            Manage Category
           </NavLink>
           <NavLink
             to="/dashboard/admin/create-product"
@@ -40,6 +40,17 @@ const AdminSideBar = () => {
           >
             <AiOutlineUser />
             Users
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/products"
+            className={({ isActive }) =>
+              `flex items-center gap-2 border border-y-gray-300 py-4 pl-3 hover:bg-gray-200 ${
+                isActive ? "bg-gray-200" : "bg-none"
+              }`
+            }
+          >
+            <BiTennisBall />
+            All Products
           </NavLink>
         </ul>
       </>
