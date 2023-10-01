@@ -34,7 +34,6 @@ const CreateProductForm = () => {
   //   handle create product function
   async function handleCreateProduct(e) {
     e.preventDefault();
-    console.log(name, description, price, category, quantity, shipping, photo);
 
     const productData = new FormData();
     productData.append("name", name);
