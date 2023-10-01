@@ -17,6 +17,7 @@ import ForgotPassword from "./components/pages/Auth/ForgotPassword";
 import CreateCategory from "./components/admin/CreateCategory";
 import CreateProduct from "./components/admin/CreateProduct";
 import Users from "./components/admin/Users";
+import Products from "./components/admin/Products";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/users" element={<Users />} />
+          <Route path="admin/products" element={<Products />} />
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ForgotPassword />} />
