@@ -156,6 +156,18 @@ const CreateProductForm = () => {
             required
           />
 
+          {photo && (
+            <>
+              <div>
+                <img
+                  className="h-36 mx-auto"
+                  src={URL.createObjectURL(photo)}
+                  alt="Product Image"
+                />
+              </div>
+            </>
+          )}
+
           <button
             className="bg-slate-900 px-3 py-2 text-white text-lg cursor-pointer rounded-lg hover:text-green-400"
             type="submit"
