@@ -22,6 +22,22 @@ const Products = () => {
     }
   }
 
+  // delete product
+  async function deleteProduct(e, pid) {
+    e.preventDefault();
+    try {
+      const { data } = await axios.delete(`/api/v1/product/${pid}`);
+      if (data?.success) {
+        toast.success(data?.message);
+        getAllProducts();
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch (error) {
+      console.log(`Error inside delete products: ${error}`);
+    }
+  }
+
   useEffect(() => {
     getAllProducts();
   }, []);
@@ -41,9 +57,8 @@ const Products = () => {
               <div className="flex flex-wrap gap-x-5 gap-y-6 cursor-pointer justify-center p-4">
                 {products.map(({ name, slug, description, _id }) => (
                   // product card
-                  <Link
-                    to={`/dashboard/admin/product/${slug}`}
-                    className="hover:scale-105 duration-200 w-[350px] md:w-[300px] p-3 border border-gray-300 rounded-xl"
+                  <div
+                    className="w-[350px] md:w-[300px] p-3 border border-gray-300 rounded-xl"
                     key={_id}
                   >
                     <img
@@ -55,7 +70,21 @@ const Products = () => {
                     <p className="mt-2 text-gray-500 line-clamp-2">
                       {description}
                     </p>
-                  </Link>
+                    <div className="flex mt-2 items-center gap-4">
+                      <Link
+                        to={`/dashboard/admin/product/${slug}`}
+                        className="bg-green-200 p-2 rounded-lg text-sm hover:scale-105 hover:bg-green-300 duration-200"
+                      >
+                        Update
+                      </Link>
+                      <button
+                        onClick={(e) => deleteProduct(e, _id)}
+                        className="bg-red-200 p-2 rounded-lg text-sm hover:scale-105 hover:bg-red-300 duration-200"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
                 ))}
               </div>
             )}
