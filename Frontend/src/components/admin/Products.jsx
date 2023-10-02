@@ -44,7 +44,7 @@ const Products = () => {
 
   return (
     <div>
-      <AdminDashboardTemplate>
+      <AdminDashboardTemplate title={"Manage Products - Deal Daddy"}>
         <div className="w-full">
           <h1 className="text-2xl mt-2 font-medium text-center">
             All Products

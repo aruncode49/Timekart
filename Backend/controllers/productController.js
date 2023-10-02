@@ -37,6 +37,7 @@ export async function createProductController(req, res) {
   }
 }
 
+// update product
 export async function updateProductController(req, res) {
   try {
     const productId = req.params.pid;
@@ -106,7 +107,7 @@ export async function getAllProductsController(req, res) {
 export async function getSingleProductController(req, res) {
   try {
     const productSlug = req.params.slug;
-    const product = await Product.find({ slug: productSlug })
+    const product = await Product.findOne({ slug: productSlug })
       .populate("category")
       .select("-photo");
     if (product) {
