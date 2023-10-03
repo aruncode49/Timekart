@@ -6,26 +6,60 @@ import CardShimmer from "./CardShimmer";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { priceRange } from "../priceRange";
-import Spinner from "../Spinner";
+import ColorRingLoader from "../ColorRingLoader";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
+
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  // get total products count
+  async function getProductsCount() {
+    try {
+      const { data } = await axios.get("/api/v1/product/total");
+      if (data?.success) setTotalProducts(data?.total);
+    } catch (error) {
+      console.log("Error inside prodcut count function: " + error);
+    }
+  }
+
+  useEffect(() => {
+    getProductsCount();
+  }, []);
+
+  // loadmore products
+  async function loadMore() {
+    try {
+      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      if (data?.success) {
+        setProducts([...products, ...data?.products]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // loadmore useeffect
+  useEffect(() => {
+    loadMore();
+  }, [page]);
 
   function handleSideBarToggler() {
     setIsOpen((prev) => !prev);
   }
 
-  // get all products
+  // get all products per list page
   async function getAllProducts() {
     try {
-      const { data } = await axios.get("/api/v1/product/allProducts");
+      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
       if (data?.success) {
-        setProducts(data?.allProducts);
+        setProducts(data?.products);
       } else {
         toast.error("Something went wrong!");
       }
@@ -60,6 +94,7 @@ const Home = () => {
     getAllCategory();
   }, []);
 
+  // handle filter function
   function handleFilter(value, categoryId) {
     let categories = [...checked];
     if (value) {
@@ -72,6 +107,8 @@ const Home = () => {
 
   // get filter products
   async function filtereProduct() {
+    setLoading(true);
+    setIsOpen(false);
     try {
       const { data } = await axios.post("/api/v1/product/filter", {
         checked,
@@ -80,9 +117,11 @@ const Home = () => {
 
       if (data?.success) {
         setProducts(data?.filterProducts);
+        setLoading(false);
       }
     } catch (error) {
       console.log(`Error inside filter product function : ${error}`);
+      setLoading(false);
     }
   }
   // get filter products
@@ -183,44 +222,65 @@ const Home = () => {
           </section>
         )}
 
-        {/* all products section */}
-        {products.length === 0 ? (
-          <CardShimmer />
+        {loading ? (
+          <ColorRingLoader />
         ) : (
-          <section className="mt-5 w-full">
-            <div className="flex flex-wrap gap-4 gap-y-6 justify-center">
-              {products.map(({ name, slug, description, _id, price }) => (
-                // product card
-                <div
-                  className="w-[350px] md:w-[250px] p-3 border border-gray-300 rounded-xl"
-                  key={_id}
-                >
-                  <Link>
-                    <img
-                      className="h-[200px] mx-auto rounded-xl"
-                      src={`/api/v1/product/image/${_id}`}
-                      alt={name}
-                    />
-                    <h1 className=" font-medium mt-2 line-clamp-1">{name}</h1>
-                    <p className="mt-1 text-gray-500 line-clamp-2 text-sm">
-                      {description}
-                    </p>
-                  </Link>
-                  <div className="mt-2 flex items-center justify-between">
-                    <p className="font-medium text-green-700">₹{price}</p>
-                    <button
-                      onClick={() => alert("hello")}
-                      className="bg-yellow-400 hover:scale-105 hover:bg-yellow-500 duration-200 border border-gray-400 px-2 py-1 rounded-lg font-medium"
+          <>
+            {/* all products section */}
+            {products.length === 0 ? (
+              <CardShimmer />
+            ) : (
+              <section className="mt-5 w-full">
+                <div className="flex flex-wrap gap-4 gap-y-6 justify-center">
+                  {products.map(({ name, slug, description, _id, price }) => (
+                    // product card
+                    <div
+                      className="w-[350px] md:w-[250px] p-3 border border-gray-300 rounded-xl"
+                      key={_id}
                     >
-                      Add to Cart
-                    </button>
-                  </div>
+                      <Link>
+                        <img
+                          className="h-[200px] mx-auto rounded-xl"
+                          src={`/api/v1/product/image/${_id}`}
+                          alt={name}
+                        />
+                        <h1 className=" font-medium mt-2 line-clamp-1">
+                          {name}
+                        </h1>
+                        <p className="mt-1 text-gray-500 line-clamp-2 text-sm">
+                          {description}
+                        </p>
+                      </Link>
+                      <div className="mt-2 flex items-center justify-between">
+                        <p className="font-medium text-green-700">₹{price}</p>
+                        <button
+                          onClick={() => alert("hello")}
+                          className="bg-yellow-400 hover:scale-105 hover:bg-yellow-500 duration-200 border border-gray-400 px-2 py-1 rounded-lg font-medium"
+                        >
+                          Add to Cart
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </section>
+              </section>
+            )}
+          </>
         )}
       </div>
+      {/* Loader */}
+      {products && products.length < totalProducts && (
+        <div className="mx-auto text-white px-3 py-2 rounded-lg font-medium hover:bg-green-700 hover:scale-105 duration-200 text-lg mt-12 bg-green-600 w-fit">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setPage(page + 1);
+            }}
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </Layout>
   );
 };

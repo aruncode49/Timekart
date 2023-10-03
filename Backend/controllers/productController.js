@@ -83,7 +83,6 @@ export async function getAllProductsController(req, res) {
     const allProducts = await Product.find({})
       .populate("category")
       .select("-photo")
-      .limit(12)
       .sort({ createdAt: -1 });
     if (allProducts) {
       return res.status(200).send({
@@ -183,6 +182,48 @@ export async function productFilterController(req, res) {
     res.status(400).send({
       success: false,
       message: "Error while filtering products",
+      error: error.message,
+    });
+  }
+}
+
+// product count controller function
+export async function productCountController(req, res) {
+  try {
+    const total = await Product.find({}).estimatedDocumentCount();
+    res.status(200).send({
+      success: true,
+      total,
+    });
+  } catch (error) {
+    console.log(`Error inside product filter controller: ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error in product count controller",
+      error: error.message,
+    });
+  }
+}
+
+// product list controller function
+export async function productListController(req, res) {
+  try {
+    const perPageProducts = 9;
+    const page = req.params.page || 1;
+    const products = await Product.find({})
+      .select("-photo")
+      .skip((page - 1) * perPageProducts)
+      .limit(perPageProducts)
+      .sort({ createdAt: -1 });
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(`Error inside product filter controller: ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error in product list per page controller",
       error: error.message,
     });
   }

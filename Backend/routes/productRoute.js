@@ -6,7 +6,9 @@ import {
   getAllProductsController,
   getProductImageController,
   getSingleProductController,
+  productCountController,
   productFilterController,
+  productListController,
   updateProductController,
 } from "../controllers/productController.js";
 import { isAdmin, requireLogin } from "../middlewares/authMiddleware.js";
@@ -21,6 +23,9 @@ router.post(
   formidable(),
   createProductController
 );
+
+// product counts || method : get
+router.get("/total", productCountController);
 
 // update product || Method : Post
 router.put(
@@ -45,5 +50,8 @@ router.delete("/:pid", requireLogin, isAdmin, deleteProductController);
 
 // product filter || Method: post
 router.post("/filter", productFilterController);
+
+// product list per page || method : get
+router.get("/product-list/:page", productListController);
 
 export default router;
