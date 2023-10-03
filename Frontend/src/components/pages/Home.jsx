@@ -6,11 +6,13 @@ import CardShimmer from "./CardShimmer";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { priceRange } from "../priceRange";
+import Spinner from "../Spinner";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
 
@@ -32,6 +34,11 @@ const Home = () => {
     }
   }
 
+  // get all products conditionaly
+  useEffect(() => {
+    if (!checked.length && !radio.length) getAllProducts();
+  }, [checked.length, radio.length]);
+
   // get all category function
   async function getAllCategory() {
     try {
@@ -48,6 +55,11 @@ const Home = () => {
     }
   }
 
+  // for fetching category
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
   function handleFilter(value, categoryId) {
     let categories = [...checked];
     if (value) {
@@ -58,10 +70,25 @@ const Home = () => {
     setChecked(categories);
   }
 
+  // get filter products
+  async function filtereProduct() {
+    try {
+      const { data } = await axios.post("/api/v1/product/filter", {
+        checked,
+        radio,
+      });
+
+      if (data?.success) {
+        setProducts(data?.filterProducts);
+      }
+    } catch (error) {
+      console.log(`Error inside filter product function : ${error}`);
+    }
+  }
+  // get filter products
   useEffect(() => {
-    getAllProducts();
-    getAllCategory();
-  }, []);
+    if (checked.length || radio.length) filtereProduct();
+  }, [checked.length, radio.length]);
 
   // for mobile filter panel
   useEffect(() => {
@@ -101,9 +128,9 @@ const Home = () => {
       <div className="px-6 flex gap-4">
         {/* filters section */}
         {isOpen && (
-          <section className=" flex flex-col fixed md:relative bg-white min-w-[250px] max-h-[80vh] border border-gray-200 mt-5">
+          <section className="flex flex-col absolute md:relative bg-white min-w-[250px] rounded-lg max-h-[80vh] border border-gray-200 mt-5">
             {/* category */}
-            <div className="p-3 flex flex-col gap-2 w-full">
+            <div className="mt-3 p-3 flex flex-col gap-2 w-full">
               <h1 className="font-medium bg-gray-300 px-2 py-1 text-center rounded-md">
                 Categories
               </h1>
@@ -134,15 +161,24 @@ const Home = () => {
                     className="cursor-pointer"
                     type="radio"
                     name={"priceRange"}
-                    value={range}
+                    value={JSON.stringify(range)}
                     id={name}
-                    onChange={(e) => setRadio(e.target.value)}
+                    onChange={(e) => setRadio(JSON.parse(e.target.value))}
                   />
                   <label className="cursor-pointer" htmlFor={name}>
                     {name}
                   </label>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-3 mb-10 mx-4 rounded-lg hover:bg-red-600 text-center bg-red-500 text-white">
+              <button
+                onClick={(e) => window.location.reload()}
+                className="w-full px-2 py-1 "
+              >
+                RESET FILTERS
+              </button>
             </div>
           </section>
         )}
@@ -165,9 +201,7 @@ const Home = () => {
                       src={`/api/v1/product/image/${_id}`}
                       alt={name}
                     />
-                    <h1 className="text-lg font-medium mt-2 line-clamp-1">
-                      {name}
-                    </h1>
+                    <h1 className=" font-medium mt-2 line-clamp-1">{name}</h1>
                     <p className="mt-1 text-gray-500 line-clamp-2 text-sm">
                       {description}
                     </p>

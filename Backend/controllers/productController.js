@@ -165,3 +165,25 @@ export async function deleteProductController(req, res) {
     });
   }
 }
+
+// product filter controller
+export async function productFilterController(req, res) {
+  try {
+    const { checked, radio } = req.body;
+    let args = {};
+    if (checked.length > 0) args.category = checked;
+    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
+    const filterProducts = await Product.find(args);
+    res.status(200).send({
+      success: true,
+      filterProducts,
+    });
+  } catch (error) {
+    console.log(`Error inside product filter controller: ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error while filtering products",
+      error: error.message,
+    });
+  }
+}
