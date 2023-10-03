@@ -12,7 +12,7 @@ const AdminDashboardTemplate = ({ children, title }) => {
 
   return (
     <Layout title={title}>
-      <div className="">
+      <div className="max-w-screen-lg mx-auto">
         {/* Admin Panel Heading */}
         <div
           onClick={handleSideBarToggler}

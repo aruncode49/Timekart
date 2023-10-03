@@ -19,7 +19,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
 
       <Header />
 
-      <main className="max-w-screen-lg mx-auto px-4 overflow-hidden">
+      <main className="mx-auto px-4 overflow-hidden">
         <Toaster />
         {children}
       </main>
