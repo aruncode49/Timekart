@@ -1,14 +1,192 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../layouts/Layout";
-import useAuth from "../../context/AuthContext";
+import axios from "axios";
+import toast from "react-hot-toast";
+import CardShimmer from "./CardShimmer";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { priceRange } from "../priceRange";
 
 const Home = () => {
-  const [auth, setAuth] = useAuth();
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(true);
+  const [checked, setChecked] = useState([]);
+  const [radio, setRadio] = useState([]);
+
+  function handleSideBarToggler() {
+    setIsOpen((prev) => !prev);
+  }
+
+  // get all products
+  async function getAllProducts() {
+    try {
+      const { data } = await axios.get("/api/v1/product/allProducts");
+      if (data?.success) {
+        setProducts(data?.allProducts);
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch (error) {
+      console.log(`Error inside get all products: ${error}`);
+    }
+  }
+
+  // get all category function
+  async function getAllCategory() {
+    try {
+      const res = await axios.get("/api/v1/category/allCategories");
+      const data = await res.data;
+
+      if (data?.success) {
+        setCategories(data.allCategories);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(`Error inside get all category function : ${error}`);
+    }
+  }
+
+  function handleFilter(value, categoryId) {
+    let categories = [...checked];
+    if (value) {
+      categories.push(categoryId);
+    } else {
+      categories = categories.filter((cid) => cid !== categoryId);
+    }
+    setChecked(categories);
+  }
+
+  useEffect(() => {
+    getAllProducts();
+    getAllCategory();
+  }, []);
+
+  // for mobile filter panel
+  useEffect(() => {
+    // Function to check if the screen width is below a certain threshold (e.g., 768px)
+    const checkIsMobile = () => {
+      if (window.innerWidth < 768) {
+        setIsOpen(false);
+      }
+    };
+
+    // Initially, check the screen size and set the state
+    checkIsMobile();
+
+    // Add a listener for window resize events to update the state
+    window.addEventListener("resize", checkIsMobile);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []);
 
   return (
     <Layout title={"Deal Daddy - Online Shopping Website"}>
-      <h1>Home Page</h1>
-      <pre>{JSON.stringify(auth, null, 1)}</pre>
+      {/* header div */}
+      <div className="flex gap-3 text-lg font-medium mt-3 px-6 w-full">
+        <button
+          onClick={handleSideBarToggler}
+          className="w-[100px] bg-gray-200 rounded-lg flex items-center justify-center gap-2 py-2 px-2"
+        >
+          {isOpen ? <AiFillCaretUp /> : <AiFillCaretDown />}Filters
+        </button>
+        <h1 className="w-full text-center text-xl mt-3">All Products</h1>
+      </div>
+
+      {/* container */}
+      <div className="px-6 flex gap-4">
+        {/* filters section */}
+        {isOpen && (
+          <section className=" flex flex-col fixed md:relative bg-white min-w-[250px] max-h-[80vh] border border-gray-200 mt-5">
+            {/* category */}
+            <div className="p-3 flex flex-col gap-2 w-full">
+              <h1 className="font-medium bg-gray-300 px-2 py-1 text-center rounded-md">
+                Categories
+              </h1>
+              {categories?.map((data, index) => (
+                <div className="flex justify-start gap-3" key={index}>
+                  <input
+                    className="cursor-pointer"
+                    type="checkbox"
+                    name={data.name}
+                    id={data.name}
+                    onChange={(e) => handleFilter(e.target.checked, data._id)}
+                  />
+                  <label className="cursor-pointer" htmlFor={data.name}>
+                    {data.name}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {/* Price range */}
+            <div className="p-3 flex flex-col gap-2 w-full">
+              <h1 className="font-medium bg-gray-300 px-2 py-1 text-center rounded-md">
+                Price Range
+              </h1>
+              {priceRange?.map(({ name, id, range }) => (
+                <div className="flex justify-start gap-3" key={id}>
+                  <input
+                    className="cursor-pointer"
+                    type="radio"
+                    name={"priceRange"}
+                    value={range}
+                    id={name}
+                    onChange={(e) => setRadio(e.target.value)}
+                  />
+                  <label className="cursor-pointer" htmlFor={name}>
+                    {name}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* all products section */}
+        {products.length === 0 ? (
+          <CardShimmer />
+        ) : (
+          <section className="mt-5 w-full">
+            <div className="flex flex-wrap gap-4 gap-y-6 justify-center">
+              {products.map(({ name, slug, description, _id, price }) => (
+                // product card
+                <div
+                  className="w-[350px] md:w-[250px] p-3 border border-gray-300 rounded-xl"
+                  key={_id}
+                >
+                  <Link>
+                    <img
+                      className="h-[200px] mx-auto rounded-xl"
+                      src={`/api/v1/product/image/${_id}`}
+                      alt={name}
+                    />
+                    <h1 className="text-lg font-medium mt-2 line-clamp-1">
+                      {name}
+                    </h1>
+                    <p className="mt-1 text-gray-500 line-clamp-2 text-sm">
+                      {description}
+                    </p>
+                  </Link>
+                  <div className="mt-2 flex items-center justify-between">
+                    <p className="font-medium text-green-700">₹{price}</p>
+                    <button
+                      onClick={() => alert("hello")}
+                      className="bg-yellow-400 hover:scale-105 hover:bg-yellow-500 duration-200 border border-gray-400 px-2 py-1 rounded-lg font-medium"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
     </Layout>
   );
 };

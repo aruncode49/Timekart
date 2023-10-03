@@ -41,14 +41,14 @@ const Header = () => {
   // Navbar
   return (
     <div className="bg-slate-900 text-white">
-      <div className="max-w-screen-lg mx-auto px-4 flex justify-between items-center py-3">
+      <div className="mx-auto px-8 flex justify-between items-center py-3">
         {/* logo */}
         <NavLink to={"/"}>
           <div className="flex items-center gap-2 cursor-pointer">
             <BsCart4 fontSize={34} />
             <h1 className="text text-3xl md:text-4xl font-bold pt-2">
-              <span className="text-green-400">D</span>eal{" "}
-              <span className="text-green-400">D</span>addy
+              <span className="text-green-400">B</span>e{" "}
+              <span className="text-green-400">W</span>atch
             </h1>
           </div>
         </NavLink>

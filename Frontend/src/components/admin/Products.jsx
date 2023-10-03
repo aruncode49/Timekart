@@ -66,8 +66,10 @@ const Products = () => {
                       src={`/api/v1/product/image/${_id}`}
                       alt={name}
                     />
-                    <h1 className="text-lg font-medium mt-2">{name}</h1>
-                    <p className="mt-2 text-gray-500 line-clamp-2">
+                    <h1 className="text-lg font-medium mt-2 line-clamp-1">
+                      {name}
+                    </h1>
+                    <p className="text-sm mt-2 text-gray-500 line-clamp-2">
                       {description}
                     </p>
                     <div className="flex mt-2 items-center gap-4">
