@@ -3,15 +3,21 @@ import Layout from "../layouts/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
 import CardShimmer from "./CardShimmer";
-import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import {
+  AiFillCaretDown,
+  AiFillCaretUp,
+  AiOutlineSearch,
+} from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { priceRange } from "../priceRange";
 import ColorRingLoader from "../ColorRingLoader";
+import SearchInput from "../forms/SearchInput";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
 
@@ -152,6 +158,11 @@ const Home = () => {
 
   return (
     <Layout title={"Deal Daddy - Online Shopping Website"}>
+      {/* input search */}
+      <div className="mx-auto ml-2 md:ml-0 w-full md:px-6 mt-3 py-3">
+        <SearchInput />
+      </div>
+
       {/* header div */}
       <div className="flex gap-3 text-lg font-medium mt-3 px-6 w-full">
         <button
