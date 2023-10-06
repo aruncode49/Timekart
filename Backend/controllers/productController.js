@@ -249,3 +249,27 @@ export async function searchProductController(req, res) {
     });
   }
 }
+
+// related product controller
+export async function relatedProductController(req, res) {
+  try {
+    const { pid, cid } = req.params;
+    const products = await Product.find({
+      category: cid,
+      _id: { $ne: pid },
+    })
+      .select("-photo")
+      .populate("category");
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.log(`Error inside related product controller: ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error in related product controller",
+      error: error.message,
+    });
+  }
+}

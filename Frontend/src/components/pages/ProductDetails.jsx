@@ -1,25 +1,42 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../layouts/Layout";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState();
+  const [similarProducts, setSimilarProducts] = useState();
   const params = useParams();
 
   async function getProductDetails() {
     try {
       const { data } = await axios.get(`/api/v1/product/${params.slug}`);
       if (data?.success) {
-        setProduct(data.product);
+        setProduct(data?.product);
+        getSimilarProducts(data?.product?._id, data?.product?.category?._id);
       }
     } catch (error) {
       console.log(`Error inside product details : ${error}`);
     }
   }
 
+  //   get similar products
+  async function getSimilarProducts(pid, cid) {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/product/related-products/${pid}/${cid}`
+      );
+      if (data?.success) {
+        setSimilarProducts(data.products);
+      }
+    } catch (error) {
+      console.log(`Error inside similar product : ${error}`);
+    }
+  }
+
   useEffect(() => {
     getProductDetails();
+    window.scrollTo(0, 0);
   }, [params.slug]);
 
   return (
@@ -27,7 +44,7 @@ const ProductDetails = () => {
       <div className="mt-3 max-w-[900px] mx-auto">
         <h1 className="text-center text-2xl font-medium">ProductDetails</h1>
         {product && (
-          <div className="flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10 mt-10 ">
+          <div className="flex flex-col md:flex-row justify-center items-center md:items-start md:gap-10 mt-4 ">
             {/* image */}
             <div className=" p-6 rounded-lg relative">
               <img
@@ -58,6 +75,48 @@ const ProductDetails = () => {
           </div>
         )}
       </div>
+
+      {similarProducts?.length < 1 ? (
+        <h1 className="text-center mt-8 text-red-600">
+          No Similar Product Found
+        </h1>
+      ) : (
+        <section className="mt-8 w-full">
+          <h1 className="text-2xl font-medium text-center ">
+            Similar Products
+          </h1>
+          <div className="flex flex-wrap gap-4 gap-y-6 justify-center mt-4">
+            {similarProducts?.map(({ name, slug, description, _id, price }) => (
+              // product card
+              <div
+                className="w-[350px] md:w-[250px] p-3 border border-gray-300 rounded-xl"
+                key={_id}
+              >
+                <Link to={`/product/${slug}`}>
+                  <img
+                    className="h-[200px] mx-auto rounded-xl"
+                    src={`/api/v1/product/image/${_id}`}
+                    alt={name}
+                  />
+                  <h1 className=" font-medium mt-2 line-clamp-1">{name}</h1>
+                  <p className="mt-1 text-gray-500 line-clamp-2 text-sm">
+                    {description}
+                  </p>
+                </Link>
+                <div className="mt-2 flex items-center justify-between">
+                  <p className="font-medium text-green-700">₹{price}</p>
+                  <button
+                    onClick={() => alert("hello")}
+                    className="bg-yellow-400 hover:scale-105 hover:bg-yellow-500 duration-200 border border-gray-400 px-2 py-1 rounded-lg font-medium"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </Layout>
   );
 };
