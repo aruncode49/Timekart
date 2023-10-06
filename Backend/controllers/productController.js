@@ -196,7 +196,7 @@ export async function productCountController(req, res) {
       total,
     });
   } catch (error) {
-    console.log(`Error inside product filter controller: ${error}`);
+    console.log(`Error inside product count controller: ${error}`);
     res.status(400).send({
       success: false,
       message: "Error in product count controller",
@@ -220,10 +220,31 @@ export async function productListController(req, res) {
       products,
     });
   } catch (error) {
-    console.log(`Error inside product filter controller: ${error}`);
+    console.log(`Error inside product list per page controller: ${error}`);
     res.status(400).send({
       success: false,
       message: "Error in product list per page controller",
+      error: error.message,
+    });
+  }
+}
+
+// search product controller function
+export async function searchProductController(req, res) {
+  try {
+    const { keyword } = req.params;
+    const searchProducts = await Product.find({
+      $or: [
+        { name: { $rejex: keyword, $options: "i" } },
+        { description: { $rejex: keyword, $options: "i" } },
+      ],
+    }).select("-photo");
+    res.status(200).json(searchProducts);
+  } catch (error) {
+    console.log(`Error inside search product controller: ${error}`);
+    res.status(400).send({
+      success: false,
+      message: "Error in search product controller",
       error: error.message,
     });
   }

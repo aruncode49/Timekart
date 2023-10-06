@@ -9,6 +9,7 @@ import {
   productCountController,
   productFilterController,
   productListController,
+  searchProductController,
   updateProductController,
 } from "../controllers/productController.js";
 import { isAdmin, requireLogin } from "../middlewares/authMiddleware.js";
@@ -53,5 +54,8 @@ router.post("/filter", productFilterController);
 
 // product list per page || method : get
 router.get("/product-list/:page", productListController);
+
+// search product using a keyword
+router.get("/search/:keyword", searchProductController);
 
 export default router;
