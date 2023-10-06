@@ -235,8 +235,8 @@ export async function searchProductController(req, res) {
     const { keyword } = req.params;
     const searchProducts = await Product.find({
       $or: [
-        { name: { $rejex: keyword, $options: "i" } },
-        { description: { $rejex: keyword, $options: "i" } },
+        { name: { $regex: keyword, $options: "i" } },
+        { description: { $regex: keyword, $options: "i" } },
       ],
     }).select("-photo");
     res.status(200).json(searchProducts);
