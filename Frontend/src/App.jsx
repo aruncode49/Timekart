@@ -19,12 +19,14 @@ import CreateProduct from "./components/admin/CreateProduct";
 import Users from "./components/admin/Users";
 import Products from "./components/admin/Products";
 import UpdateProduct from "./components/admin/UpdateProduct";
+import SearchPage from "./components/pages/SearchPage";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchPage />} />
         {/* User Private Routes */}
         <Route path="/dashboard" element={<UserPrivateRoute />}>
           <Route path="user" element={<UserDashboard />} />

@@ -249,7 +249,7 @@ const Home = () => {
                       className="w-[350px] md:w-[250px] p-3 border border-gray-300 rounded-xl"
                       key={_id}
                     >
-                      <Link>
+                      <Link to={`/product/${slug}`}>
                         <img
                           className="h-[200px] mx-auto rounded-xl"
                           src={`/api/v1/product/image/${_id}`}
