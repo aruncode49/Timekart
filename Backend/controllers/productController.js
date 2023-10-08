@@ -1,5 +1,6 @@
 import slugify from "slugify";
 import Product from "../models/productModel.js";
+import Category from "../models/categoryModel.js";
 import fs from "fs";
 
 // create product controller

@@ -6,7 +6,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import toast from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
-import Category from "../Category";
 
 // material ui component
 import Button from "@mui/material/Button";
@@ -68,9 +67,6 @@ const Header = () => {
           >
             About
           </NavLink>
-          <div className="py-2 px-2 hover:text-green-400">
-            <Category />
-          </div>
 
           <NavLink
             className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
@@ -184,9 +180,6 @@ const Header = () => {
               to="/about"
             >
               About
-            </NavLink>
-            <NavLink className="py-5 flex items-start text-lg font-medium border-b border-b-gray-200 pl-8 px-4  hover:bg-slate-600">
-              <Category />
             </NavLink>
 
             {auth.user ? (

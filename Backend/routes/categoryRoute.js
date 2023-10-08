@@ -13,11 +13,11 @@ const router = express.Router();
 // post route for create category
 router.post("/create", requireLogin, isAdmin, createCategoryController);
 
-// put route for update category
-router.put("/update/:id", requireLogin, isAdmin, updateCategoryController);
-
 // get route for getting all categories
 router.get("/allCategories", getAllCategoriesController);
+
+// put route for update category
+router.put("/update/:id", requireLogin, isAdmin, updateCategoryController);
 
 // get route for getting a particular category
 router.get("/:slug", getSingleCategoryController);
