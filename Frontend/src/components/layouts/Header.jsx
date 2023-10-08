@@ -57,42 +57,23 @@ const Header = () => {
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-1 pt-2">
           <NavLink
-            className={({ isActive }) =>
-              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
-                isActive ? "text-green-400" : "text-white"
-              }`
-            }
+            className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
             to="/"
           >
             Home
           </NavLink>
           <NavLink
-            className={({ isActive }) =>
-              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
-                isActive ? "text-green-400" : "text-white"
-              }`
-            }
+            className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
             to="/about"
           >
             About
           </NavLink>
-          {/* <NavLink
-            className={({ isActive }) =>
-              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
-                isActive ? "text-green-400" : "text-white"
-              }`
-            }
-            to="/category"
-          >
-            Category
-          </NavLink> */}
-          <Category />
+          <div className="py-2 px-2 hover:text-green-400">
+            <Category />
+          </div>
+
           <NavLink
-            className={({ isActive }) =>
-              `text-lg px-2 py-1 font-medium hover:text-green-400 ${
-                isActive ? "text-green-400" : "text-white"
-              }`
-            }
+            className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
             to="/cart"
           >
             <div className="relative mr-2">
@@ -204,11 +185,8 @@ const Header = () => {
             >
               About
             </NavLink>
-            <NavLink
-              className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4  hover:bg-slate-600"
-              to="/category"
-            >
-              Category
+            <NavLink className="py-5 flex items-start text-lg font-medium border-b border-b-gray-200 pl-8 px-4  hover:bg-slate-600">
+              <Category />
             </NavLink>
 
             {auth.user ? (

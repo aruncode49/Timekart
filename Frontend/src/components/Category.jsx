@@ -15,14 +15,14 @@ const Category = () => {
     <div>
       <div
         onClick={handleSideBarToggler}
-        className="flex items-center justify-center gap-1 font-medium text-lg py-2 cursor-pointer mx-2 hover:text-green-400"
+        className="flex items-center justify-center gap-1 font-medium text-lg cursor-pointer hover:text-green-400"
       >
         Category
         {isOpen ? <AiOutlineUp /> : <AiOutlineDown />}
       </div>
       {/* Side Menu */}
       {isOpen && (
-        <div className="shadow-lg absolute px-2 py-2 rounded-lg text-black bg-white flex flex-col">
+        <div className="shadow-lg absolute mt-3 px-2 py-2 rounded-lg text-black bg-white flex flex-col">
           <Link
             to={"/all-categories"}
             className="py-2 px-2 hover:bg-gray-100 cursor-pointer"
@@ -30,9 +30,9 @@ const Category = () => {
             All Categories
           </Link>
           {categories &&
-            categories.map((category, index) => (
+            categories.map((category) => (
               <Link
-                key={index}
+                key={category._id}
                 to={`/category/${category.slug}`}
                 className=" py-2 px-2 cursor-pointer hover:bg-gray-100 capitalize"
               >
