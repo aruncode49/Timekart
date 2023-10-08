@@ -40,8 +40,8 @@ const Header = () => {
 
   // Navbar
   return (
-    <div className="bg-slate-900 text-white">
-      <div className="mx-auto px-8 flex justify-between items-center py-3">
+    <div className="bg-slate-900 text-white py-1">
+      <div className="mx-auto px-2 md:px-6 flex justify-between items-center py-3">
         {/* logo */}
         <NavLink to={"/"}>
           <div className="flex items-center gap-2 cursor-pointer">
@@ -55,25 +55,25 @@ const Header = () => {
 
         {/* Nav Links */}
         <div className="hidden md:flex items-center gap-1 pt-2">
-          <NavLink
-            className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
-            to="/"
-          >
+          <NavLink className={`text-lg px-2 py-1 hover:text-green-400 `} to="/">
             Home
           </NavLink>
           <NavLink
-            className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
+            className={`text-lg px-2 py-1 hover:text-green-400 `}
             to="/about"
           >
             About
           </NavLink>
 
           <NavLink
-            className={`text-lg px-2 py-1 font-medium hover:text-green-400 `}
+            className={`text-lg px-2 py-1 hover:text-green-400 `}
             to="/cart"
           >
-            <div className="relative mr-2">
-              <span className="absolute -top-5 -right-2 text-green-400">0</span>
+            <div className="relative mr-2 flex gap-1">
+              <h1>Cart</h1>
+              <span className="absolute -top-3 -right-2 bg-red-500 text-sm w-5 h-5 text-center rounded-full text-white ">
+                0
+              </span>
               <BsCart4 fontSize={26} />
             </div>
           </NavLink>
@@ -90,7 +90,7 @@ const Header = () => {
                   aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
                 >
-                  {auth?.user?.name} <AiOutlineDown />
+                  {auth?.user?.name.split(" ")[0]} <AiOutlineDown />
                 </Button>
                 <Menu
                   id="basic-menu"
@@ -123,7 +123,7 @@ const Header = () => {
               {/* Register */}
               <NavLink
                 className={({ isActive }) =>
-                  `text-lg px-2 py-1 ml-2 font-medium border border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
+                  `text-lg px-2 py-1 ml-2 border border-white hover:border-green-400 hover:text-green-400 rounded-xl ${
                     isActive
                       ? "border-green-400 text-green-400"
                       : "border-white text-white"
@@ -135,7 +135,7 @@ const Header = () => {
               </NavLink>
               {/* Login */}
               <NavLink
-                className="text-lg px-2 py-1 ml-2 font-medium bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600"
+                className="text-lg px-2 py-1 ml-2  bg-white outline-none border-none text-slate-900 rounded-xl hover:text-white hover:bg-green-600"
                 to="/login"
               >
                 Login
@@ -147,22 +147,25 @@ const Header = () => {
         {/* Nav Links for mobile version */}
         <div className="flex items-center md:hidden z-50">
           <NavLink
-            className="text-lg px-2 py-1 font-medium hover:text-green-400 pt-2"
+            className="text-lg px-2 py-1 font-medium hover:text-green-400 "
             to="/cart"
           >
-            <div className="relative mr-2">
-              <span className="absolute -top-5 -right-2 text-green-400">0</span>
+            <div className="relative mr-1 flex gap-1">
+              <h1>Cart</h1>
+              <span className="absolute -top-3 -right-2 bg-red-500 text-sm w-5 h-5 text-center rounded-full text-white ">
+                0
+              </span>
               <BsCart4 fontSize={26} />
             </div>
           </NavLink>
           <div
-            className="text-green-500 cursor-pointer p-2 mt-2"
+            className="text-green-500 cursor-pointer p-2 "
             onClick={() => setIsNavLinksShown((prev) => !prev)}
           >
             {isNavLinksShown ? (
-              <AiOutlineClose fontSize={34} />
+              <AiOutlineClose fontSize={30} />
             ) : (
-              <GiHamburgerMenu fontSize={34} />
+              <GiHamburgerMenu fontSize={30} />
             )}
           </div>
         </div>
@@ -170,13 +173,13 @@ const Header = () => {
         {isNavLinksShown && (
           <div className="text-green-400 flex flex-col absolute top-0 right-0 w-1/2 bg-slate-900 pt-[5rem] shadow-xl rounded-xl z-40">
             <NavLink
-              className="py-5 text-lg font-medium border-b border-t border-gray-200 pl-8 px-4 hover:bg-slate-600"
+              className="py-5 text-lg border-b border-t border-gray-200 pl-8 px-4 hover:bg-slate-600"
               to="/"
             >
               Home
             </NavLink>
             <NavLink
-              className="py-5 text-lg font-medium border-b border-t border-gray-200 pl-8 px-4  hover:bg-slate-600"
+              className="py-5 text-lg border-b border-t border-gray-200 pl-8 px-4  hover:bg-slate-600"
               to="/about"
             >
               About
@@ -186,13 +189,13 @@ const Header = () => {
               <>
                 {/* Logout */}
                 <NavLink
-                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
+                  className="py-5 text-lg  border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
                   to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
                 >
                   Dashboard
                 </NavLink>
                 <NavLink
-                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
+                  className="py-5 text-lg  border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
                   to="/login"
                   onClick={handleLogOut}
                 >
@@ -203,14 +206,14 @@ const Header = () => {
               <>
                 {/* Register */}
                 <NavLink
-                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600"
+                  className="py-5 text-lg  border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600"
                   to="/register"
                 >
                   Register
                 </NavLink>
                 {/* Login */}
                 <NavLink
-                  className="py-5 text-lg font-medium border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
+                  className="py-5 text-lg  border-b border-b-gray-200 pl-8 px-4 hover:bg-slate-600 rounded-b-xl"
                   to="/login"
                 >
                   Login
