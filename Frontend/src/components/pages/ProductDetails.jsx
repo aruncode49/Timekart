@@ -48,7 +48,7 @@ const ProductDetails = () => {
             {/* image */}
             <div className=" p-6 rounded-lg relative">
               <img
-                className="max-w-[250px]"
+                className="max-w-[250px] rounded-lg"
                 src={`/api/v1/product/image/${product._id}`}
                 alt=""
               />

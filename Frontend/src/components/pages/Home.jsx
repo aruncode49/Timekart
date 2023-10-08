@@ -193,7 +193,10 @@ const Home = () => {
                     id={data.name}
                     onChange={(e) => handleFilter(e.target.checked, data._id)}
                   />
-                  <label className="cursor-pointer" htmlFor={data.name}>
+                  <label
+                    className="cursor-pointer capitalize"
+                    htmlFor={data.name}
+                  >
                     {data.name}
                   </label>
                 </div>

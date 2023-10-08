@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import toast from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
+import Category from "../Category";
 
 // material ui component
 import Button from "@mui/material/Button";
@@ -75,7 +76,7 @@ const Header = () => {
           >
             About
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className={({ isActive }) =>
               `text-lg px-2 py-1 font-medium hover:text-green-400 ${
                 isActive ? "text-green-400" : "text-white"
@@ -84,7 +85,8 @@ const Header = () => {
             to="/category"
           >
             Category
-          </NavLink>
+          </NavLink> */}
+          <Category />
           <NavLink
             className={({ isActive }) =>
               `text-lg px-2 py-1 font-medium hover:text-green-400 ${
