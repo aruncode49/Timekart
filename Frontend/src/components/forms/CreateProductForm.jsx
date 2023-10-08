@@ -149,7 +149,7 @@ const CreateProductForm = () => {
             type="file"
             id="uploadImage"
             name="photo"
-            accept="image/png, image/jpeg, image/jpg"
+            accept="image/*"
             onChange={(e) => setPhoto(e.target.files[0])}
             placeholder="Select product image"
             spellCheck="false"
