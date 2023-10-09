@@ -8,6 +8,30 @@ const CartPage = () => {
   const [auth, setAuth] = useAuth();
   const [cartItem, setCartItem] = useCart();
 
+  // REMOVE ITEM FROM CART
+  function removeItem(pid) {
+    try {
+      const products = cartItem?.filter((product) => product._id !== pid);
+      setCartItem(products);
+      localStorage.setItem("cart", JSON.stringify(products));
+      toast.success("Item removed successfully!");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // COUNT PRICE FOR TOTAL PRODUCTS
+  function countPrice() {
+    let totalPrice = 0;
+    cartItem?.map((product) => {
+      totalPrice += product.price;
+    });
+    return totalPrice.toLocaleString("en-US", {
+      style: "currency",
+      currency: "INR",
+    });
+  }
+
   return (
     <Layout>
       {!auth?.user ? (
@@ -55,7 +79,10 @@ const CartPage = () => {
                         ₹{product.price}
                       </span>
                     </p>
-                    <button className="bg-red-500 text-white p-1 rounded-md mt-2 text-sm hover:bg-red-400">
+                    <button
+                      onClick={() => removeItem(product._id)}
+                      className="bg-red-500 text-white px-2 py-1 rounded-md mt-3 mb-2 text-sm hover:bg-red-400"
+                    >
                       Remove
                     </button>
                   </div>
@@ -63,10 +90,14 @@ const CartPage = () => {
               ))}
             </div>
             {/* cart summary */}
-            <div className="basis-[40%]">
-              <h1>Cart Summary</h1>
-              <p>Total | Checkout | Payment</p>
-              <h1>Total: 23</h1>
+            <div className="basis-[40%] text-center">
+              <h1 className="text-2xl font-medium mt-4">Cart Summary</h1>
+              <p className="text-lg mt-2 text-gray-600 pb-4 border-b">
+                Total | Checkout | Payment
+              </p>
+              <h1 className="mt-3 text-xl text-gray-500 border-2 border-gray-400 w-fit mx-auto px-2 py-1 rounded-lg">
+                Total: {countPrice()}
+              </h1>
             </div>
           </div>
         </div>

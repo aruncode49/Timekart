@@ -49,7 +49,7 @@ const Header = () => {
           <div className="flex items-center gap-2 cursor-pointer">
             <BsCart4 fontSize={34} />
             <h1 className="text text-3xl md:text-4xl font-bold pt-2">
-              <span className="text-green-400">B</span>e{" "}
+              <span className="text-green-400">B</span>e
               <span className="text-green-400">W</span>atch
             </h1>
           </div>
@@ -149,12 +149,11 @@ const Header = () => {
         {/* Nav Links for mobile version */}
         <div className="flex items-center md:hidden z-50">
           <NavLink
-            className="text-lg px-2 py-1 font-medium hover:text-green-400 "
+            className="text-lg px-2 py-2 font-medium hover:text-green-400 "
             to="/cart"
           >
-            <div className="relative mr-1 flex gap-1">
-              <h1>Cart</h1>
-              <span className="absolute -top-3 -right-2 bg-red-500 text-sm w-5 h-5 text-center rounded-full text-white ">
+            <div className="relative px-2 py-1 mr-1 flex gap-1">
+              <span className="absolute -top-2 -right-2 bg-red-500 text-sm w-5 h-5 text-center rounded-full text-white ">
                 {cartItem?.length}
               </span>
               <BsCart4 fontSize={26} />
