@@ -21,12 +21,14 @@ import Products from "./components/admin/Products";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import SearchPage from "./components/pages/SearchPage";
 import ProductDetails from "./components/pages/ProductDetails";
+import CartPage from "./components/pages/CartPage";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         {/* User Private Routes */}
