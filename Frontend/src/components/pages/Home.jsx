@@ -12,18 +12,27 @@ import { Link } from "react-router-dom";
 import { priceRange } from "../priceRange";
 import ColorRingLoader from "../ColorRingLoader";
 import SearchInput from "../forms/SearchInput";
+import { useCart } from "../../context/CartContext";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
 
   const [totalProducts, setTotalProducts] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  // use cart
+  const [cartItem, setCartItem] = useCart();
+
+  function addItemToCart(product) {
+    setCartItem([...cartItem, product]);
+    toast.success("Item added to cart");
+    localStorage.setItem("cart", JSON.stringify([...cartItem, product]));
+  }
 
   // get total products count
   async function getProductsCount() {
@@ -159,7 +168,7 @@ const Home = () => {
   return (
     <Layout title={"Deal Daddy - Online Shopping Website"}>
       {/* input search */}
-      <div className="mx-auto ml-2 md:ml-0 w-full md:px-6 mt-3 py-3">
+      <div className="mx-auto ml-2 md:ml-0 w-full md:px-6 py-3">
         <SearchInput />
       </div>
 
@@ -246,29 +255,29 @@ const Home = () => {
             ) : (
               <section className="mt-5 w-full">
                 <div className="flex flex-wrap gap-4 gap-y-6 justify-center">
-                  {products.map(({ name, slug, description, _id, price }) => (
+                  {products.map((p) => (
                     // product card
                     <div
                       className="w-[350px] md:w-[250px] p-3 border border-gray-300 rounded-xl"
-                      key={_id}
+                      key={p._id}
                     >
-                      <Link to={`/product/${slug}`}>
+                      <Link to={`/product/${p.slug}`}>
                         <img
                           className="h-[200px] mx-auto rounded-xl"
-                          src={`/api/v1/product/image/${_id}`}
-                          alt={name}
+                          src={`/api/v1/product/image/${p._id}`}
+                          alt={p.name}
                         />
                         <h1 className=" font-medium mt-2 line-clamp-1">
-                          {name}
+                          {p.name}
                         </h1>
                         <p className="mt-1 text-gray-500 line-clamp-2 text-sm">
-                          {description}
+                          {p.description}
                         </p>
                       </Link>
                       <div className="mt-2 flex items-center justify-between">
-                        <p className="font-medium text-green-700">₹{price}</p>
+                        <p className="font-medium text-green-700">₹{p.price}</p>
                         <button
-                          onClick={() => alert("hello")}
+                          onClick={() => addItemToCart(p)}
                           className="bg-yellow-400 hover:scale-105 hover:bg-yellow-500 duration-200 border border-gray-400 px-2 py-1 rounded-lg font-medium"
                         >
                           Add to Cart

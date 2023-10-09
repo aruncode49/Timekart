@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import toast from "react-hot-toast";
 import useAuth from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 
 // material ui component
 import Button from "@mui/material/Button";
@@ -15,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 const Header = () => {
   const [isNavLinksShown, setIsNavLinksShown] = useState(false);
   const [auth, setAuth] = useAuth();
+  const [cartItem, setCartItem] = useCart();
 
   const [cookies, setCookies, removeCookies] = useCookies(["token"]);
 
@@ -72,7 +74,7 @@ const Header = () => {
             <div className="relative mr-2 flex gap-1">
               <h1>Cart</h1>
               <span className="absolute -top-3 -right-2 bg-red-500 text-sm w-5 h-5 text-center rounded-full text-white ">
-                0
+                {cartItem?.length}
               </span>
               <BsCart4 fontSize={26} />
             </div>
@@ -153,7 +155,7 @@ const Header = () => {
             <div className="relative mr-1 flex gap-1">
               <h1>Cart</h1>
               <span className="absolute -top-3 -right-2 bg-red-500 text-sm w-5 h-5 text-center rounded-full text-white ">
-                0
+                {cartItem?.length}
               </span>
               <BsCart4 fontSize={26} />
             </div>
