@@ -161,3 +161,59 @@ export const testController = (req, res) => {
     message: "Test Successfull",
   });
 };
+
+// update profile controller
+export const updateUserProfileController = async (req, res) => {
+  try {
+    const { name, password, address, phone } = req.body;
+    const user = await User.findById(req.userId);
+
+    // check name validation
+    if (name && name.length < 4) {
+      return res.status(200).send({
+        success: false,
+        message: "name must be 4 characters",
+      });
+    }
+
+    // check password validation
+    if (password && password.length < 6) {
+      return res.status(200).send({
+        success: false,
+        message: "password must be 6 characters",
+      });
+    }
+
+    let hashedPassword = undefined;
+    if (password) {
+      hashedPassword = await hashPassword(password);
+    }
+
+    // update user data
+    await User.findByIdAndUpdate(req.userId, {
+      name: name || user.name,
+      email: user.email,
+      phone: phone || user.phone,
+      address: address || user.address,
+      password: hashedPassword || user.password,
+    });
+
+    res.status(200).send({
+      success: true,
+      message: "User updated successfully",
+      updatedUser: {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role,
+        address: user.address,
+      },
+    });
+  } catch (error) {
+    return res.status(400).send({
+      success: false,
+      message: "Error in update profile controller",
+      error: error.message,
+    });
+  }
+};

@@ -6,6 +6,7 @@ import {
   userAuthController,
   resetPasswordController,
   adminAuthController,
+  updateUserProfileController,
 } from "../controllers/authController.js";
 
 import { requireLogin, isAdmin } from "../middlewares/authMiddleware.js";
@@ -31,4 +32,7 @@ router.post("/reset-password", resetPasswordController);
 
 // PROTECTED ROUTE (FOR TESTING) || METHOD GET
 router.get("/test", requireLogin, isAdmin, testController);
+
+// update user profile
+router.put("/update-profile", requireLogin, updateUserProfileController);
 export default router;

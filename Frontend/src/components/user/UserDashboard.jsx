@@ -10,7 +10,7 @@ const UserDashboard = () => {
   return (
     <UserDashboardTemplate title="Dashboard User - Deal Daddy">
       {/* Admin Details */}
-      {auth.user && (
+      {auth?.user && (
         <div className="flex gap-2 mt-4 text-lg ">
           <img
             className="rounded-full w-[100px] h-[100px]"
