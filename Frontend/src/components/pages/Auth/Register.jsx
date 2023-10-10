@@ -11,6 +11,7 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [answer, setAnswer] = useState("");
+  const [address, setAddress] = useState("");
 
   // use navigate hook for changing the location or redirect the user
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Register = () => {
         phone,
         password,
         answer,
+        address,
       });
 
       const data = await res.data;
@@ -82,6 +84,16 @@ const Register = () => {
               placeholder="Enter your phone no."
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              spellCheck="false"
+              required
+            />
+            <input
+              className="px-3 py-2 border border-slate-900 outline-none placeholder:text-slate-900 rounded-lg selection:bg-green-400 placeholder:text-sm"
+              type="text"
+              name="address"
+              placeholder="Enter your current address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               spellCheck="false"
               required
             />

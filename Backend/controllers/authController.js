@@ -5,7 +5,7 @@ import { hashPassword, comparePassword } from "../helpers/bcrypt.js";
 // register controller
 export const registerController = async (req, res) => {
   try {
-    const { name, email, phone, password, role, answer } = req.body;
+    const { name, email, phone, password, address, role, answer } = req.body;
 
     // handle name error
     if (name.length < 4) {
@@ -38,6 +38,7 @@ export const registerController = async (req, res) => {
       email,
       phone,
       password: hashedPassword,
+      address,
       answer,
       role,
     });
@@ -92,6 +93,7 @@ export const loginController = async (req, res) => {
         email: user.email,
         phone: user.phone,
         role: user.role,
+        address: user.address,
       },
     });
   } catch (error) {
