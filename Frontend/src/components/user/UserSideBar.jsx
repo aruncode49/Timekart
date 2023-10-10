@@ -16,7 +16,7 @@ const UserSideBar = () => {
             }
           >
             <AiOutlineUser />
-            Profile
+            Update Profile
           </NavLink>
           <NavLink
             to="/dashboard/user/orders"
