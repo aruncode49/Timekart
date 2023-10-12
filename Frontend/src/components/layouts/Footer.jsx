@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import footerLogo from "/images/footer_logo.png";
 
 const Footer = () => {
   return (
     <div className="px-8 py-4 pb-16 border-t border-gray-300 text-center w-full mt-20 ">
-      <img
-        className="w-[50px] mx-auto "
-        src={footerLogo}
-        alt="footer_white_mustache"
-      />
+      <h1
+        id="header_logo"
+        className="text-3xl font-bold pt-2 tracking-widest mt-5 mb-3"
+      >
+        <span className="text-green-500">T</span>ime
+        <span className="text-green-500">k</span>art
+      </h1>
       <p className="text-gray-600 md:text-lg">
         ©️ 2023 Deal Daddy India, Inc. All Right Reserved
       </p>

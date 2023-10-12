@@ -47,10 +47,12 @@ const Header = () => {
         {/* logo */}
         <NavLink to={"/"}>
           <div className="flex items-center gap-2 cursor-pointer">
-            <BsCart4 fontSize={34} />
-            <h1 className="text text-3xl md:text-4xl font-bold pt-2">
-              <span className="text-green-400">B</span>e
-              <span className="text-green-400">W</span>atch
+            <h1
+              id="header_logo"
+              className="text-4xl md:text-5xl font-bold pt-2 tracking-widest"
+            >
+              <span className="text-green-500">T</span>ime
+              <span className="text-green-500">k</span>art
             </h1>
           </div>
         </NavLink>
