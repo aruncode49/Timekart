@@ -26,3 +26,10 @@ body {
   border-color: rgb(74 222 128);
   color: rgb(74 222 128);
 }
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
