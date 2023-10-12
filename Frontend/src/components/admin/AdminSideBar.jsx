@@ -52,6 +52,17 @@ const AdminSideBar = () => {
             <BiTennisBall />
             All Products
           </NavLink>
+          <NavLink
+            to="/dashboard/admin/orders"
+            className={({ isActive }) =>
+              `flex items-center gap-2 border border-y-gray-300 py-4 pl-3 hover:bg-gray-200 ${
+                isActive ? "bg-gray-200" : "bg-none"
+              }`
+            }
+          >
+            <AiOutlineShoppingCart />
+            Manage Orders
+          </NavLink>
         </ul>
       </>
     </div>
