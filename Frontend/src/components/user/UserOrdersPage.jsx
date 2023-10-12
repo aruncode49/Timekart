@@ -33,11 +33,11 @@ const UserOrdersPage = () => {
         ) : (
           <>
             {orders?.map((order, index) => (
-              <div>
+              <div key={index}>
                 <table className="w-full border border-black mt-6">
                   <thead>
                     <tr className="text-center bg-yellow-300 text-sm font-normal">
-                      <th className="py-3">Sr.No.</th>
+                      <th className="py-3">P.No.</th>
                       <th>Status</th>
                       <th>Buyer</th>
                       <th>Date</th>
@@ -46,7 +46,7 @@ const UserOrdersPage = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr key={index} className="text-center text-sm">
+                    <tr className="text-center text-sm">
                       <td className="py-3">{index + 1}</td>
                       <td>{order?.status}</td>
                       <td>{order?.buyer?.name}</td>
@@ -89,8 +89,6 @@ const UserOrdersPage = () => {
             ))}
           </>
         )}
-
-        {/* Ordered Products */}
       </div>
     </UserDashboardTemplate>
   );
