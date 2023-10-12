@@ -168,28 +168,30 @@ const CartPage = () => {
             )}
 
             {/* Payment */}
-            <div>
-              {!clientToken || !cartItem.length ? (
-                ""
-              ) : (
-                <>
-                  <DropIn
-                    options={{
-                      authorization: clientToken,
-                    }}
-                    onInstance={(instance) => setInstance(instance)}
-                  />
+            {auth?.user && (
+              <div>
+                {!clientToken || !cartItem.length ? (
+                  ""
+                ) : (
+                  <>
+                    <DropIn
+                      options={{
+                        authorization: clientToken,
+                      }}
+                      onInstance={(instance) => setInstance(instance)}
+                    />
 
-                  <button
-                    className="bg-green-800 text-white text-lg px-2 py-1 rounded-lg mt-4 hover:scale-105 duration-200 cursor-pointer"
-                    onClick={handlePayment}
-                    disabled={!instance || !auth?.user?.address}
-                  >
-                    {loading ? "Processing..." : "Make Payment"}
-                  </button>
-                </>
-              )}
-            </div>
+                    <button
+                      className="bg-green-800 text-white text-lg px-2 py-1 rounded-lg mt-4 hover:scale-105 duration-200 cursor-pointer"
+                      onClick={handlePayment}
+                      disabled={!instance || !auth?.user?.address}
+                    >
+                      {loading ? "Processing..." : "Make Payment"}
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
