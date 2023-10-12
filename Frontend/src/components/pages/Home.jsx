@@ -13,6 +13,7 @@ import { priceRange } from "../priceRange";
 import ColorRingLoader from "../ColorRingLoader";
 import SearchInput from "../forms/SearchInput";
 import { useCart } from "../../context/CartContext";
+import banner from "/images/ecommerce-banner.jpg";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -167,6 +168,12 @@ const Home = () => {
 
   return (
     <Layout title={"Deal Daddy - Online Shopping Website"}>
+      <img
+        className="mx-auto w-full mt-3 rounded-lg opacity-95"
+        src={banner}
+        alt="website banner"
+      />
+
       {/* input search */}
       <div className="mx-auto ml-2 md:ml-0 w-full md:px-6 py-3">
         <SearchInput />
