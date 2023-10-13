@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import Spinner from "../Spinner";
 import axios from "axios";
+import useAuth from "../../context/AuthContext";
 
 const UserPrivateRoute = () => {
   const [ok, setOk] = useState(false);
-  const [cookies] = useCookies("token");
-  const token = cookies.token;
+  const [auth, setAuth] = useAuth();
 
   useEffect(() => {
     const authCheck = async () => {
@@ -20,8 +19,8 @@ const UserPrivateRoute = () => {
       }
     };
 
-    if (token) authCheck();
-  }, [token]);
+    if (auth?.token) authCheck();
+  }, [auth?.token]);
 
   return ok ? <Outlet /> : <Spinner />;
 };

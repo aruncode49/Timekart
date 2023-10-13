@@ -83,7 +83,7 @@ export const loginController = async (req, res) => {
 
     // If Both are Correct then create a json web token
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    res.cookie("token", token);
+    // res.cookie("token", token);
     return res.status(200).send({
       success: true,
       message: "User successfully Logged In",
@@ -94,6 +94,7 @@ export const loginController = async (req, res) => {
         role: user.role,
         address: user.address,
       },
+      token,
     });
   } catch (error) {
     res.status(500).send({
