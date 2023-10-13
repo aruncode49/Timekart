@@ -12,9 +12,7 @@ export const userOrdersController = async (req, res) => {
       success: true,
       orders,
     });
-  } catch (error) {
-    console.log(`Error insdie userOrdersController: ${error}`);
-  }
+  } catch (error) {}
 };
 
 // get all orders for admin controller
@@ -29,9 +27,7 @@ export const allOrdersController = async (req, res) => {
       success: true,
       allOrders,
     });
-  } catch (error) {
-    console.log(`Error insdie allOrdersController: ${error}`);
-  }
+  } catch (error) {}
 };
 
 // change order status controller
@@ -44,7 +40,5 @@ export const changeOrderStatusController = async (req, res) => {
       success: true,
       message: "Status Changed Successfully",
     });
-  } catch (error) {
-    console.log(`Error insdie changeOrderStatusController: ${error}`);
-  }
+  } catch (error) {}
 };

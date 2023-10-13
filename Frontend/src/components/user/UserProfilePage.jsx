@@ -47,7 +47,6 @@ const UserProfilePage = () => {
       }
     } catch (error) {
       toast.error("Something Went Wrong!");
-      console.log(`Error inside handleProfileUpdateSubmit: ${error}`);
     }
   }
 

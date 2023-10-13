@@ -14,9 +14,7 @@ const Users = () => {
       if (data?.success) {
         setUsers(data?.allUsers);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {

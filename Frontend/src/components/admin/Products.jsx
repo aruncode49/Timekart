@@ -17,9 +17,7 @@ const Products = () => {
       } else {
         toast.error("Something went wrong!");
       }
-    } catch (error) {
-      console.log(`Error inside get all products: ${error}`);
-    }
+    } catch (error) {}
   }
 
   // delete product
@@ -33,9 +31,7 @@ const Products = () => {
       } else {
         toast.error("Something went wrong!");
       }
-    } catch (error) {
-      console.log(`Error inside delete products: ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {

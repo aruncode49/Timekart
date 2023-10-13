@@ -30,9 +30,7 @@ const UpdateProductForm = () => {
         setShipping(data.product.shipping);
         setProductId(data.product._id);
       }
-    } catch (error) {
-      console.log(`Error inside get single product function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // first get all categories
@@ -46,9 +44,7 @@ const UpdateProductForm = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside get all category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // handle create product function
@@ -76,9 +72,7 @@ const UpdateProductForm = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside update product function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {

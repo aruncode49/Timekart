@@ -22,9 +22,7 @@ const CreateCategory = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside get all category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // create new category function
@@ -39,9 +37,7 @@ const CreateCategory = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside create new category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // delete category
@@ -56,9 +52,7 @@ const CreateCategory = () => {
       } else {
         toast.error("Something went wrong!");
       }
-    } catch (error) {
-      console.log(`Error inside delete category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // update category
@@ -79,9 +73,7 @@ const CreateCategory = () => {
       } else {
         toast.error("Something went wrong!");
       }
-    } catch (error) {
-      console.log(`Error inside update category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // call get All category function

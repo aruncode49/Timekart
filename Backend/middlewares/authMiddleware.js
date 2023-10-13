@@ -15,7 +15,6 @@ export const requireLogin = async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(`Error in require login middleware: ${error}`);
     res.status(500).send({
       success: false,
       message: "Error in require login",
@@ -35,7 +34,5 @@ export const isAdmin = async (req, res, next) => {
     } else {
       next();
     }
-  } catch (error) {
-    console.log(`Error in isAdmin Middleware: ${error}`);
-  }
+  } catch (error) {}
 };

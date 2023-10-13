@@ -23,9 +23,7 @@ const AdminOrders = () => {
       if (data?.success) {
         setOrders(data?.allOrders);
       }
-    } catch (error) {
-      console.log(`Error inside get all order function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // change status
@@ -40,9 +38,7 @@ const AdminOrders = () => {
       if (data?.success) {
         toast.success(data?.message);
       }
-    } catch (error) {
-      console.log(`Error inside handleStatusChange function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {

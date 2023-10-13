@@ -24,9 +24,7 @@ const CartPage = () => {
       setCartItem(products);
       localStorage.setItem("cart", JSON.stringify(products));
       toast.success("Item removed successfully!");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   // COUNT PRICE FOR TOTAL PRODUCTS
@@ -46,9 +44,7 @@ const CartPage = () => {
     try {
       const { data } = await axios.get("/api/v1/product/braintree-token");
       setClientToken(data?.clientToken);
-    } catch (error) {
-      console.log(`Error inside get payment token function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {
@@ -74,7 +70,6 @@ const CartPage = () => {
         toast.error("Something went wrong");
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   }

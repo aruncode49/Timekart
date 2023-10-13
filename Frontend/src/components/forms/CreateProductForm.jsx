@@ -26,9 +26,7 @@ const CreateProductForm = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside get all category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   //   handle create product function
@@ -53,9 +51,7 @@ const CreateProductForm = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside create product function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {

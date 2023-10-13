@@ -37,10 +37,8 @@ const Register = () => {
       } else {
         toast.error(res.data.message);
       }
-      console.log(`Registration Response Successfull : ${data}`);
     } catch (error) {
       toast.error("Something Went Wrong!");
-      console.log(`Error inside handleRegistration: ${error}`);
     }
   }
 

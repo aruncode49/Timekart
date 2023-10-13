@@ -27,9 +27,7 @@ const ProductDetails = () => {
         setProduct(data?.product);
         getSimilarProducts(data?.product?._id, data?.product?.category?._id);
       }
-    } catch (error) {
-      console.log(`Error inside product details : ${error}`);
-    }
+    } catch (error) {}
   }
 
   //   get similar products
@@ -41,9 +39,7 @@ const ProductDetails = () => {
       if (data?.success) {
         setSimilarProducts(data.products);
       }
-    } catch (error) {
-      console.log(`Error inside similar product : ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {

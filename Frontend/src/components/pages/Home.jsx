@@ -40,9 +40,7 @@ const Home = () => {
     try {
       const { data } = await axios.get("/api/v1/product/total");
       if (data?.success) setTotalProducts(data?.total);
-    } catch (error) {
-      console.log("Error inside prodcut count function: " + error);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {
@@ -56,9 +54,7 @@ const Home = () => {
       if (data?.success) {
         setProducts([...products, ...data?.products]);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   // loadmore useeffect
@@ -79,9 +75,7 @@ const Home = () => {
       } else {
         toast.error("Something went wrong!");
       }
-    } catch (error) {
-      console.log(`Error inside get all products: ${error}`);
-    }
+    } catch (error) {}
   }
 
   // get all products conditionaly
@@ -100,9 +94,7 @@ const Home = () => {
       } else {
         toast.error(data.message);
       }
-    } catch (error) {
-      console.log(`Error inside get all category function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   // for fetching category
@@ -136,7 +128,6 @@ const Home = () => {
         setLoading(false);
       }
     } catch (error) {
-      console.log(`Error inside filter product function : ${error}`);
       setLoading(false);
     }
   }

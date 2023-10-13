@@ -32,10 +32,8 @@ const Register = () => {
       } else {
         toast.error(res.data.message);
       }
-      console.log(`Password Reset Successfully : ${data}`);
     } catch (error) {
       toast.error("Something Went Wrong!");
-      console.log(`Error inside resetPassword: ${error}`);
     }
   }
 

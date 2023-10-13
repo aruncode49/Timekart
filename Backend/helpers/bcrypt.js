@@ -6,16 +6,12 @@ export const hashPassword = async (password) => {
     const saltRound = 10;
     const hashedPassword = await bcrypt.hash(password, saltRound);
     return hashedPassword;
-  } catch (error) {
-    console.log(`Error in hashPassword (bcrypt.js) : ${error}`);
-  }
+  } catch (error) {}
 };
 
 // Compare Password
 export const comparePassword = async (password, hashedPassword) => {
   try {
     return await bcrypt.compare(password, hashedPassword);
-  } catch (error) {
-    console.log(`Error in comparePassword (bcrypt.js) : ${error}`);
-  }
+  } catch (error) {}
 };

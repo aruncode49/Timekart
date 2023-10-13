@@ -24,7 +24,6 @@ export async function createCategoryController(req, res) {
       message: "category created successfully",
     });
   } catch (error) {
-    console.log(`Error inside create category controller: ${error}`);
     return res.status(500).send({
       error,
       success: false,
@@ -44,7 +43,6 @@ export async function updateCategoryController(req, res) {
       message: "Category Updated Successfully",
     });
   } catch (error) {
-    console.log(`Error inside update category controller: ${error}`);
     return res.status(500).send({
       error,
       success: false,
@@ -69,7 +67,6 @@ export async function getAllCategoriesController(req, res) {
       allCategories,
     });
   } catch (error) {
-    console.log(`Error inside get all categories controller: ${error}`);
     return res.status(500).send({
       error,
       success: false,
@@ -97,7 +94,6 @@ export async function getSingleCategoryController(req, res) {
       getCategoryFromSlug,
     });
   } catch (error) {
-    console.log(`Error inside get single category controller: ${error}`);
     return res.status(500).send({
       error,
       success: false,
@@ -116,7 +112,6 @@ export async function deleteCategoryController(req, res) {
       message: "Category Deleted Successfully",
     });
   } catch (error) {
-    console.log(`Error inside delete category controller: ${error}`);
     return res.status(500).send({
       error,
       success: false,

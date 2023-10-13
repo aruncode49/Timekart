@@ -14,9 +14,7 @@ const UserOrdersPage = () => {
       if (data?.success) {
         setOrders(data?.orders);
       }
-    } catch (error) {
-      console.log(`Error inside get all order function : ${error}`);
-    }
+    } catch (error) {}
   }
 
   useEffect(() => {
