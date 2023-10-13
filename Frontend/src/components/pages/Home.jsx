@@ -167,7 +167,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout title={"Deal Daddy - Online Shopping Website"}>
+    <Layout title={"TimeKart - Online Shopping Website"}>
       <img
         className="mx-auto w-full mt-3 rounded-lg opacity-95"
         src={banner}

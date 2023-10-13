@@ -90,7 +90,7 @@ const CreateCategory = () => {
   }, []);
 
   return (
-    <AdminDashboardTemplate title={"Create New Category - Deal Daddy"}>
+    <AdminDashboardTemplate title={"Create New Category - Timekart"}>
       <div className="w-full">
         <h1 className="text-2xl mt-2 font-medium">Manage Category</h1>
 

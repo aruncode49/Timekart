@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const SearchPage = () => {
   const [values, setValues] = useSearch();
   return (
-    <Layout>
+    <Layout title={"Search Products - Timekart"}>
       <div className="mx-auto text-center">
         <h1 className="text-2xl font-medium mt-2">Search Results</h1>
         <h3 className="mt-2">

@@ -52,7 +52,7 @@ const ProductDetails = () => {
   }, [params.slug]);
 
   return (
-    <Layout>
+    <Layout title={"Product Details - Timekart"}>
       <div className="mt-3 max-w-[900px] mx-auto">
         <h1 className="text-center text-2xl font-medium">ProductDetails</h1>
         {product && (

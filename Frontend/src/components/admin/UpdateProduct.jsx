@@ -4,7 +4,7 @@ import UpdateProductForm from "../forms/UpdateProductForm";
 
 const UpdateProduct = () => {
   return (
-    <AdminDashboardTemplate title={"Update Product - Deal Daddy"}>
+    <AdminDashboardTemplate title={"Update Product - Timekart"}>
       <div className="w-full">
         <h1 className="text-2xl mt-2 font-medium text-center">
           Update Product

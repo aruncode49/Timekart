@@ -80,7 +80,7 @@ const CartPage = () => {
   }
 
   return (
-    <Layout>
+    <Layout title={"Cart - Timekart"}>
       <div className="max-w-[1100px] mx-auto">
         {/* cart header */}
         <h1 className="text-2xl text-center font-medium mt-4 capitalize">

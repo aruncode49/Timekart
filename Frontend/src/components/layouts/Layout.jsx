@@ -30,11 +30,11 @@ const Layout = ({ children, title, description, keywords, author }) => {
 };
 
 Layout.defaultProps = {
-  title: "Deal Daddy - Online Shopping Website",
+  title: "Timekart - Online Shopping Website",
   description:
     "A full stack ecommerce app project created using mongodb, express js, react js and node js.",
   keywords:
-    "arunkumar, dealdaddy, deal daddy, deal daddy website, ecommerce app, ecommerce project, mern stack project, mernapp, mongodb, reactjs, nodejs, expressjs arunkumarprojects",
+    "arunkumar, timekart, timekart website, ecommerce app, ecommerce project, mern stack project, mernapp, mongodb, reactjs, nodejs, expressjs arunkumarprojects",
   author: "Arun Kumar",
 };
 

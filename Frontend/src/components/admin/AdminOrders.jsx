@@ -50,7 +50,7 @@ const AdminOrders = () => {
   }, []);
 
   return (
-    <AdminDashboardTemplate>
+    <AdminDashboardTemplate title={"Manage Orders - Timekart"}>
       <div className="w-full">
         <h1 className="text-2xl mt-2 font-medium text-center">Manage Orders</h1>
 

@@ -24,7 +24,7 @@ const UserOrdersPage = () => {
   }, []);
 
   return (
-    <UserDashboardTemplate title={"User Orders - Deal Daddy"}>
+    <UserDashboardTemplate title={"User Orders - Timekart"}>
       <div className="w-full">
         <h1 className="text-2xl mt-2 font-medium text-center">Your Orders</h1>
 

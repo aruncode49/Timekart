@@ -50,7 +50,7 @@ const Login = () => {
   }
 
   return (
-    <Layout title={"Log In - Deal Daddy"}>
+    <Layout title={"Log In - Timekart"}>
       <div className="mx-auto mt-20 md:w-[600px] text-center">
         {/* form backgournd div */}
 

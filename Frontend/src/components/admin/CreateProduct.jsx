@@ -4,7 +4,7 @@ import CreateProductForm from "../forms/CreateProductForm";
 
 const CreateProduct = () => {
   return (
-    <AdminDashboardTemplate title={"Create New Product - Deal Daddy"}>
+    <AdminDashboardTemplate title={"Create New Product - Timekart"}>
       <div className="w-full">
         <h1 className="text-2xl mt-2 font-medium text-center">
           Create Product

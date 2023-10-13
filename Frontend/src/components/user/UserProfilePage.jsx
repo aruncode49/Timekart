@@ -62,7 +62,7 @@ const UserProfilePage = () => {
   }, [auth?.user]);
 
   return (
-    <UserDashboardTemplate title={"User Profile - Deal Daddy"}>
+    <UserDashboardTemplate title={"User Profile - Timekart"}>
       <div className="mx-auto mt-8 w-full md:w-[600px] text-center">
         {/* form backgournd div */}
         <div className="px-4 md:px-8 py-8 pb-10 bg-white/30 backdrop:blur-sm mx-4 md:mx-0 rounded-2xl border border-gray-500 shadow-lg">

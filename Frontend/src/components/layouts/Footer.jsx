@@ -12,9 +12,9 @@ const Footer = () => {
         <span className="text-green-500">k</span>art
       </h1>
       <p className="text-gray-600 md:text-lg">
-        ©️ 2023 Deal Daddy India, Inc. All Right Reserved
+        ©️ 2023 Timekart India, Inc. All Right Reserved
       </p>
-      <div className="pt-2 flex md:gap-3 justify-center  text-slate-900">
+      <div className="pt-2 flex md:gap-2 justify-center  text-slate-900">
         <Link className="px-2 hover:underline" to="/about">
           About
         </Link>

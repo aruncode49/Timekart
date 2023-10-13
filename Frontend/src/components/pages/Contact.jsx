@@ -6,7 +6,7 @@ import { BiLogoGmail } from "react-icons/bi";
 
 const Contact = () => {
   return (
-    <Layout title={"Contact Us - Deal Daddy"}>
+    <Layout title={"Contact Us - TimeKart"}>
       <div className="md:w-full flex flex-col md:flex-row items-center justify-center md:gap-8 mt-20 text-center ">
         <img
           className="w-[400px] rounded-2xl shadow-md mb-8 md:mb-0 "

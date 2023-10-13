@@ -8,7 +8,7 @@ const UserDashboard = () => {
   const [auth, setAuth] = useAuth();
 
   return (
-    <UserDashboardTemplate title="Dashboard User - Deal Daddy">
+    <UserDashboardTemplate title="Dashboard User - Timekart">
       {/* Admin Details */}
       {auth?.user && (
         <div className="flex gap-2 mt-4 text-lg ">
