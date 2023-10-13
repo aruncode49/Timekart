@@ -7,6 +7,7 @@ import {
   resetPasswordController,
   adminAuthController,
   updateUserProfileController,
+  getAllUsersController,
 } from "../controllers/authController.js";
 
 import { requireLogin, isAdmin } from "../middlewares/authMiddleware.js";
@@ -26,6 +27,9 @@ router.get("/user-auth", requireLogin, userAuthController);
 
 // PRIVATE ROUTE FOR DASHBOARD || METHOD GET
 router.get("/admin-auth", requireLogin, isAdmin, adminAuthController);
+
+// GET ALL USER LIST || METHOD GET
+router.get("/all-users", requireLogin, isAdmin, getAllUsersController);
 
 // RESET PASSWORD ROUTE || METHOD POST
 router.post("/reset-password", resetPasswordController);

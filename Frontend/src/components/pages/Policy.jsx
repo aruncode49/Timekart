@@ -11,7 +11,7 @@ const Policy = () => {
           <em>Last Updated: 2023</em>
           <br />
           <br />
-          At Deal Daddy, we value your privacy and are committed to protecting
+          At Timekart, we value your privacy and are committed to protecting
           your personal information. This Privacy Policy outlines how we
           collect, use, disclose, and safeguard your data when you access or use
           our e-commerce platform and related services (collectively, the

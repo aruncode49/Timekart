@@ -217,3 +217,20 @@ export const updateUserProfileController = async (req, res) => {
     });
   }
 };
+
+// get all users controller
+export const getAllUsersController = async (req, res) => {
+  try {
+    const allUsers = await User.find({ role: 0 });
+    res.status(200).send({
+      success: true,
+      allUsers,
+    });
+  } catch (error) {
+    return res.status(400).send({
+      success: false,
+      message: "Error in getAllUsersController",
+      error: error.message,
+    });
+  }
+};
