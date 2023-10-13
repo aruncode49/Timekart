@@ -17,6 +17,7 @@
     "braintree-web": "^3.97.2",
     "braintree-web-drop-in-react": "^1.2.1",
     "dotenv": "^16.3.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-cookie": "^6.1.1",
     "react-dom": "^18.2.0",
