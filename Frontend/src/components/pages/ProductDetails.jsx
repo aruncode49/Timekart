@@ -23,7 +23,7 @@ const ProductDetails = () => {
   async function getProductDetails() {
     try {
       const { data } = await axios.get(
-        `http://timekart-backend.onrender.com/api/v1/product/${params.slug}`
+        `https://timekart-backend.onrender.com/api/v1/product/${params.slug}`
       );
       if (data?.success) {
         setProduct(data?.product);
@@ -36,7 +36,7 @@ const ProductDetails = () => {
   async function getSimilarProducts(pid, cid) {
     try {
       const { data } = await axios.get(
-        `http://timekart-backend.onrender.com/api/v1/product/related-products/${pid}/${cid}`
+        `https://timekart-backend.onrender.com/api/v1/product/related-products/${pid}/${cid}`
       );
       if (data?.success) {
         setSimilarProducts(data.products);
@@ -59,7 +59,7 @@ const ProductDetails = () => {
             <div className=" p-6 rounded-lg relative">
               <img
                 className="max-w-[250px] rounded-lg"
-                src={`http://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
+                src={`https://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
                 alt=""
               />
             </div>
@@ -105,7 +105,7 @@ const ProductDetails = () => {
                 <Link to={`/product/${p.slug}`}>
                   <img
                     className="h-[200px] mx-auto rounded-xl"
-                    src={`http://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
+                    src={`https://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
                     alt={p.name}
                   />
                   <h1 className=" font-medium mt-2 line-clamp-1">{p.name}</h1>

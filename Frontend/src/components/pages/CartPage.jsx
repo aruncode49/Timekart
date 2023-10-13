@@ -43,7 +43,7 @@ const CartPage = () => {
   async function getPaymentToken() {
     try {
       const { data } = await axios.get(
-        "http://timekart-backend.onrender.com/api/v1/product/braintree-token"
+        "https://timekart-backend.onrender.com/api/v1/product/braintree-token"
       );
       setClientToken(data?.clientToken);
     } catch (error) {}
@@ -59,7 +59,7 @@ const CartPage = () => {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
       const { data } = await axios.post(
-        "http://timekart-backend.onrender.com/api/v1/product/braintree-payment",
+        "https://timekart-backend.onrender.com/api/v1/product/braintree-payment",
         {
           cartItem,
           nonce,
@@ -106,7 +106,7 @@ const CartPage = () => {
                 <div className="">
                   <img
                     className="max-w-[70px] rounded-lg"
-                    src={`http://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
+                    src={`https://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
                     alt={`${product.name} image`}
                   />
                 </div>

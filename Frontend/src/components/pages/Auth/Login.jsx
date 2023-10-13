@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://timekart-backend.onrender.com/api/v1/auth/login",
+        "https://timekart-backend.onrender.com/api/v1/auth/login",
         {
           email,
           password,

@@ -15,7 +15,7 @@ const CreateCategory = () => {
   async function getAllCategory() {
     try {
       const res = await axios.get(
-        "http://timekart-backend.onrender.com/api/v1/category/allCategories"
+        "https://timekart-backend.onrender.com/api/v1/category/allCategories"
       );
       const data = await res.data;
 
@@ -32,7 +32,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://timekart-backend.onrender.com/api/v1/category/create",
+        "https://timekart-backend.onrender.com/api/v1/category/create",
         { name }
       );
       if (data?.success) {
@@ -51,7 +51,7 @@ const CreateCategory = () => {
 
     try {
       const { data } = await axios.delete(
-        `http://timekart-backend.onrender.com/api/v1/category/${cid}`
+        `https://timekart-backend.onrender.com/api/v1/category/${cid}`
       );
       if (data?.success) {
         toast.success("Category Deleted Successfully");
@@ -67,7 +67,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `http://timekart-backend.onrender.com/api/v1/category/update/${categoryId}`,
+        `https://timekart-backend.onrender.com/api/v1/category/update/${categoryId}`,
         {
           name: updateCategoryName,
         }

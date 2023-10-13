@@ -39,7 +39,7 @@ const Home = () => {
   async function getProductsCount() {
     try {
       const { data } = await axios.get(
-        "http://timekart-backend.onrender.com/api/v1/product/total"
+        "https://timekart-backend.onrender.com/api/v1/product/total"
       );
       if (data?.success) setTotalProducts(data?.total);
     } catch (error) {}
@@ -53,7 +53,7 @@ const Home = () => {
   async function loadMore() {
     try {
       const { data } = await axios.get(
-        `http://timekart-backend.onrender.com/api/v1/product/product-list/${page}`
+        `https://timekart-backend.onrender.com/api/v1/product/product-list/${page}`
       );
       if (data?.success) {
         setProducts([...products, ...data?.products]);
@@ -74,7 +74,7 @@ const Home = () => {
   async function getAllProducts() {
     try {
       const { data } = await axios.get(
-        `http://timekart-backend.onrender.com/api/v1/product/product-list/${page}`
+        `https://timekart-backend.onrender.com/api/v1/product/product-list/${page}`
       );
       if (data?.success) {
         setProducts(data?.products);
@@ -93,7 +93,7 @@ const Home = () => {
   async function getAllCategory() {
     try {
       const res = await axios.get(
-        "http://timekart-backend.onrender.com/api/v1/category/allCategories"
+        "https://timekart-backend.onrender.com/api/v1/category/allCategories"
       );
       const data = await res.data;
 
@@ -127,7 +127,7 @@ const Home = () => {
     setIsOpen(false);
     try {
       const { data } = await axios.post(
-        "http://timekart-backend.onrender.com/api/v1/product/filter",
+        "https://timekart-backend.onrender.com/api/v1/product/filter",
         {
           checked,
           radio,
@@ -273,7 +273,7 @@ const Home = () => {
                       <Link to={`/product/${p.slug}`}>
                         <img
                           className="h-[200px] mx-auto rounded-xl"
-                          src={`http://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
+                          src={`https://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
                           alt={p.name}
                         />
                         <h1 className=" font-medium mt-2 line-clamp-1">

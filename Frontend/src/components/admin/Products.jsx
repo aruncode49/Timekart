@@ -12,7 +12,7 @@ const Products = () => {
   async function getAllProducts() {
     try {
       const { data } = await axios.get(
-        "http://timekart-backend.onrender.com/api/v1/product/allProducts"
+        "https://timekart-backend.onrender.com/api/v1/product/allProducts"
       );
       if (data?.success) {
         setProducts(data?.allProducts);
@@ -27,7 +27,7 @@ const Products = () => {
     e.preventDefault();
     try {
       const { data } = await axios.delete(
-        `http://timekart-backend.onrender.com/api/v1/product/${pid}`
+        `https://timekart-backend.onrender.com/api/v1/product/${pid}`
       );
       if (data?.success) {
         toast.success(data?.message);
@@ -63,7 +63,7 @@ const Products = () => {
                   >
                     <img
                       className="h-[200px] mx-auto rounded-xl"
-                      src={`http://timekart-backend.onrender.com/api/v1/product/image/${_id}`}
+                      src={`https://timekart-backend.onrender.com/api/v1/product/image/${_id}`}
                       alt={name}
                     />
                     <h1 className="text-lg font-medium mt-2 line-clamp-1">

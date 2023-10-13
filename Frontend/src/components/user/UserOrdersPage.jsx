@@ -11,7 +11,7 @@ const UserOrdersPage = () => {
   async function getAllOrders() {
     try {
       const { data } = await axios.get(
-        "http://timekart-backend.onrender.com/api/v1/order/user-orders"
+        "https://timekart-backend.onrender.com/api/v1/order/user-orders"
       );
       if (data?.success) {
         setOrders(data?.orders);
@@ -65,7 +65,7 @@ const UserOrdersPage = () => {
                     <div className="">
                       <img
                         className="max-w-[70px] rounded-lg"
-                        src={`http://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
+                        src={`https://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
                         alt={`${product.name} image`}
                       />
                     </div>

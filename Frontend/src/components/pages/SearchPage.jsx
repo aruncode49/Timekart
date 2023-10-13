@@ -35,7 +35,7 @@ const SearchPage = () => {
                 <Link to={`/product/${p.slug}`}>
                   <img
                     className="h-[200px] mx-auto rounded-xl"
-                    src={`http://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
+                    src={`https://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
                     alt={p.name}
                   />
                   <h1 className=" font-medium mt-2 line-clamp-1">{p.name}</h1>

@@ -12,7 +12,7 @@ const SearchInput = () => {
     e.preventDefault();
     try {
       const { data } = await axios(
-        `http://timekart-backend.onrender.com/api/v1/product/search/${values.keyword}`
+        `https://timekart-backend.onrender.com/api/v1/product/search/${values.keyword}`
       );
 
       setValues({ ...values, results: data });
