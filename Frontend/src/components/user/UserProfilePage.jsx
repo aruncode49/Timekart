@@ -23,13 +23,16 @@ const UserProfilePage = () => {
   async function handleProfileUpdateSubmit(e) {
     e.preventDefault();
     try {
-      const { data } = await axios.put("/api/v1/auth/update-profile", {
-        name,
-        email,
-        phone,
-        password,
-        address,
-      });
+      const { data } = await axios.put(
+        "http://timekart-backend.onrender.com/api/v1/auth/update-profile",
+        {
+          name,
+          email,
+          phone,
+          password,
+          address,
+        }
+      );
 
       if (data?.success) {
         setAuth({

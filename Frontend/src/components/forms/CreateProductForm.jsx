@@ -18,7 +18,9 @@ const CreateProductForm = () => {
   // first get all categories
   async function getAllCategory() {
     try {
-      const res = await axios.get("/api/v1/category/allCategories");
+      const res = await axios.get(
+        "http://timekart-backend.onrender.com/api/v1/category/allCategories"
+      );
       const data = await res.data;
 
       if (data?.success) {
@@ -43,7 +45,10 @@ const CreateProductForm = () => {
     productData.append("photo", photo);
 
     try {
-      const { data } = await axios.post("/api/v1/product/create", productData);
+      const { data } = await axios.post(
+        "http://timekart-backend.onrender.com/api/v1/product/create",
+        productData
+      );
 
       if (data?.success) {
         toast.success("Product Created Successfully");

@@ -10,7 +10,9 @@ const Users = () => {
   // get all users function
   async function getAllUsers() {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-users");
+      const { data } = await axios.get(
+        "http://timekart-backend.onrender.com/api/v1/auth/all-users"
+      );
       if (data?.success) {
         setUsers(data?.allUsers);
       }

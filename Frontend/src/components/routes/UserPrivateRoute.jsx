@@ -10,7 +10,9 @@ const UserPrivateRoute = () => {
 
   useEffect(() => {
     const authCheck = async () => {
-      const res = await axios.get("/api/v1/auth/user-auth");
+      const res = await axios.get(
+        "http://timekart-backend.onrender.com/api/v1/auth/user-auth"
+      );
 
       if (res.data.ok) {
         setOk(true);

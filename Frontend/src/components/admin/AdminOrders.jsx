@@ -19,7 +19,9 @@ const AdminOrders = () => {
   // get all orders
   async function getAllOrders() {
     try {
-      const { data } = await axios.get("/api/v1/order/all-orders");
+      const { data } = await axios.get(
+        "http://timekart-backend.onrender.com/api/v1/order/all-orders"
+      );
       if (data?.success) {
         setOrders(data?.allOrders);
       }
@@ -30,7 +32,7 @@ const AdminOrders = () => {
   async function handleStatusChange(orderId, value) {
     try {
       const { data } = await axios.put(
-        `/api/v1/order/change-status/${orderId}`,
+        `http://timekart-backend.onrender.com/api/v1/order/change-status/${orderId}`,
         {
           status: value,
         }
@@ -102,7 +104,7 @@ const AdminOrders = () => {
                     <div className="">
                       <img
                         className="max-w-[70px] rounded-lg"
-                        src={`/api/v1/product/image/${product._id}`}
+                        src={`http://timekart-backend.onrender.com/api/v1/product/image/${product._id}`}
                         alt={`${product.name} image`}
                       />
                     </div>

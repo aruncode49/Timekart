@@ -38,7 +38,9 @@ const Home = () => {
   // get total products count
   async function getProductsCount() {
     try {
-      const { data } = await axios.get("/api/v1/product/total");
+      const { data } = await axios.get(
+        "http://timekart-backend.onrender.com/api/v1/product/total"
+      );
       if (data?.success) setTotalProducts(data?.total);
     } catch (error) {}
   }
@@ -50,7 +52,9 @@ const Home = () => {
   // loadmore products
   async function loadMore() {
     try {
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `http://timekart-backend.onrender.com/api/v1/product/product-list/${page}`
+      );
       if (data?.success) {
         setProducts([...products, ...data?.products]);
       }
@@ -69,7 +73,9 @@ const Home = () => {
   // get all products per list page
   async function getAllProducts() {
     try {
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `http://timekart-backend.onrender.com/api/v1/product/product-list/${page}`
+      );
       if (data?.success) {
         setProducts(data?.products);
       } else {
@@ -86,7 +92,9 @@ const Home = () => {
   // get all category function
   async function getAllCategory() {
     try {
-      const res = await axios.get("/api/v1/category/allCategories");
+      const res = await axios.get(
+        "http://timekart-backend.onrender.com/api/v1/category/allCategories"
+      );
       const data = await res.data;
 
       if (data?.success) {
@@ -118,10 +126,13 @@ const Home = () => {
     setLoading(true);
     setIsOpen(false);
     try {
-      const { data } = await axios.post("/api/v1/product/filter", {
-        checked,
-        radio,
-      });
+      const { data } = await axios.post(
+        "http://timekart-backend.onrender.com/api/v1/product/filter",
+        {
+          checked,
+          radio,
+        }
+      );
 
       if (data?.success) {
         setProducts(data?.filterProducts);
@@ -262,7 +273,7 @@ const Home = () => {
                       <Link to={`/product/${p.slug}`}>
                         <img
                           className="h-[200px] mx-auto rounded-xl"
-                          src={`/api/v1/product/image/${p._id}`}
+                          src={`http://timekart-backend.onrender.com/api/v1/product/image/${p._id}`}
                           alt={p.name}
                         />
                         <h1 className=" font-medium mt-2 line-clamp-1">

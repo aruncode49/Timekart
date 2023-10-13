@@ -21,10 +21,13 @@ const Login = () => {
   async function handleLoginSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "http://timekart-backend.onrender.com/api/v1/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
       const data = await res.data;
 

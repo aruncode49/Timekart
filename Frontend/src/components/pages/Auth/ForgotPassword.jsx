@@ -18,11 +18,14 @@ const Register = () => {
   async function resetPassword(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/reset-password", {
-        email,
-        newPassword,
-        answer,
-      });
+      const res = await axios.post(
+        "http://timekart-backend.onrender.com/api/v1/auth/reset-password",
+        {
+          email,
+          newPassword,
+          answer,
+        }
+      );
 
       const data = await res.data;
 

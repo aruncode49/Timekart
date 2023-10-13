@@ -9,7 +9,7 @@ export default defineConfig({
       "/api": {
         target: "http://timekart-backend.onrender.com",
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   },

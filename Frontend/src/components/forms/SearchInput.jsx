@@ -11,7 +11,9 @@ const SearchInput = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const { data } = await axios(`/api/v1/product/search/${values.keyword}`);
+      const { data } = await axios(
+        `http://timekart-backend.onrender.com/api/v1/product/search/${values.keyword}`
+      );
 
       setValues({ ...values, results: data });
       navigate("/search");
