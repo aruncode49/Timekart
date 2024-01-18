@@ -20,19 +20,14 @@ const Register = () => {
   async function handleRegistrationSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://timekart-backend.onrender.com/api/v1/auth/register",
-        {
-          name,
-          email,
-          phone,
-          password,
-          answer,
-          address,
-        }
-      );
-
-      const data = await res.data;
+      const res = await axios.post("/api/v1/auth/register", {
+        name,
+        email,
+        phone,
+        password,
+        answer,
+        address,
+      });
 
       if (res.data.success) {
         toast.success(res.data.message);

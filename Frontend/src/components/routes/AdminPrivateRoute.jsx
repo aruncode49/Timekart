@@ -11,9 +11,7 @@ const AdminPrivateRoute = () => {
 
   useEffect(() => {
     const authCheck = async () => {
-      const res = await axios.get(
-        "https://timekart-backend.onrender.com/api/v1/auth/admin-auth"
-      );
+      const res = await axios.get("/api/v1/auth/admin-auth");
 
       if (res.data.ok) {
         setOk(true);

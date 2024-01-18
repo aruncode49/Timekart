@@ -20,9 +20,7 @@ const UpdateProductForm = () => {
   // get single product
   async function getSingleProduct() {
     try {
-      const { data } = await axios.get(
-        `https://timekart-backend.onrender.com/api/v1/product/${params.slug}`
-      );
+      const { data } = await axios.get(`/api/v1/product/${params.slug}`);
       if (data?.success) {
         setName(data.product.name);
         setDescription(data.product.description);
@@ -38,9 +36,7 @@ const UpdateProductForm = () => {
   // first get all categories
   async function getAllCategory() {
     try {
-      const res = await axios.get(
-        "https://timekart-backend.onrender.com/api/v1/category/allCategories"
-      );
+      const res = await axios.get("/api/v1/category/allCategories");
       const data = await res.data;
 
       if (data?.success) {
@@ -66,7 +62,7 @@ const UpdateProductForm = () => {
 
     try {
       const { data } = await axios.put(
-        `https://timekart-backend.onrender.com/api/v1/product/update/${productId}`,
+        `/api/v1/product/update/${productId}`,
         productData
       );
 
@@ -192,7 +188,7 @@ const UpdateProductForm = () => {
               <div>
                 <img
                   className="h-36 mx-auto"
-                  src={`https://timekart-backend.onrender.com/api/v1/product/image/${productId}`}
+                  src={`/api/v1/product/image/${productId}`}
                   alt="Product Image"
                 />
               </div>
